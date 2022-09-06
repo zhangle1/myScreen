@@ -1,23 +1,35 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+// import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Routes } from "react-router-dom";
+import "./style/default.less";
 import EditLayout from "./page/edit";
+import "./App.css";
+import "antd/dist/antd.variable.min.css";
+import { ConfigProvider } from "antd";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+ConfigProvider.config({
+  theme: {
+    primaryColor: "#25b864",
+  },
+});
+
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-      <Route path="/" element={<App></App>}  />
-      <Route path="/edit" element={<EditLayout></EditLayout>}></Route>
-      </Routes>
-    </BrowserRouter>
+    <ConfigProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/app" element={<App></App>} />
+          <Route path="/" element={<EditLayout></EditLayout>}></Route>
+        </Routes>
+      </BrowserRouter>
+    </ConfigProvider>
   </React.StrictMode>
 );
 

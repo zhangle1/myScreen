@@ -1,0 +1,20 @@
+.z-header-box {
+  background-color: #ffffff;
+  display: grid;
+  grid-template-columns: repeat(3, 33.33%);
+  padding: 0 30px;
+  height: 60px;
+}
+.z-header-box .header-item {
+  display: flex;
+  align-items: center;
+}
+.z-header-box .header-item-left {
+  justify-content: start;
+}
+.z-header-box .header-item-center {
+  justify-content: center;
+}
+.z-header-box .header-item-right {
+  justify-content: end;
+}

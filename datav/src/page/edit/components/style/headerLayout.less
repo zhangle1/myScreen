@@ -1,0 +1,24 @@
+
+.z-header-box{
+    // background: #51d6a9;
+    background-color: #ffffff;
+    display: grid;
+    grid-template-columns: repeat(3, 33.33%);
+        .header-item{
+            display: flex;
+            align-items: center;
+              &-left {
+                justify-content: start;
+              }
+              &-center {
+                justify-content: center;
+              }
+              &-right {
+                justify-content: end;
+              }
+        }
+
+    padding: 0 30px;
+    height: 60px;
+
+}
