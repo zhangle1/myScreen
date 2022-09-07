@@ -42,7 +42,7 @@ const ContentHeaderLeft: ContentHeaderLeftInterface = (
     },
     {
       title: "前进",
-      disable: false,
+      disable: true,
       icon: function () {
         return <RightOutlined />;
       },
@@ -69,7 +69,6 @@ const ContentHeaderLeft: ContentHeaderLeftInterface = (
               size="small"
               icon={src.icon()}
               disabled={src.disable}
-              
             ></Button>
           </Tooltip>
         ))}

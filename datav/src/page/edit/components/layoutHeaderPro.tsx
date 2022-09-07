@@ -1,11 +1,12 @@
-import { Button, Space, Tooltip } from "antd";
+import { Button, Input, InputRef, Space, Tooltip, Typography } from "antd";
 import classNames from "classnames";
 import "./style/headerLayout.less";
-import { HomeOutlined } from "@ant-design/icons";
-import BarChartIcon from "../../../icon/BarChartIcon";
-import ChartLayerIcon from "../../../icon/ChartLayerIcon";
-import ChartDetailIcon from "../../../icon/ChartDetailIcon";
+
 import ContentHeaderLeft from "./contentHeader/contentHeaderLeft";
+import FishIcon from "../../../icon/FishIcon";
+import { useEffect, useRef, useState } from "react";
+import ContentHeaderCenter from "./contentHeader/contentHeaderCenter";
+import ContentHeaderRight from "./contentHeader/contentHeaderRight";
 
 export interface LayoutHeaderProProps {}
 
@@ -26,11 +27,19 @@ const LayoutHeaderPro: LayoutHeaderProInterface = (
     return <ContentHeaderLeft></ContentHeaderLeft>;
   };
 
+  const renderHeaderContent = function useRenderHeaderContent() {
+    return <ContentHeaderCenter></ContentHeaderCenter>;
+  };
+
+  const renderHeaderRight = function useRenderRightContent() {
+    return <ContentHeaderRight></ContentHeaderRight>;
+  };
+
   return (
     <div className={zHeaderClazz}>
       <div className={headerItemLeftClazz}>{renderHeaderLeft()}</div>
-      <div className={headerItemCenterClazz}>中间</div>
-      <div className={headerItemRightClazz}>右侧</div>
+      <div className={headerItemCenterClazz}>{renderHeaderContent()}</div>
+      <div className={headerItemRightClazz}>{renderHeaderRight()}</div>
     </div>
   );
 };
