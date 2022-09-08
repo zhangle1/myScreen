@@ -21,7 +21,7 @@ const LayoutHeaderPro: LayoutHeaderProInterface = (
 
   const headerItemLeftClazz = classNames("header-item-left", "header-item");
   const headerItemCenterClazz = classNames("header-item-center", "header-item");
-  const headerItemRightClazz = classNames("header-item-center", "header-item");
+  const headerItemRightClazz = classNames("header-item-right", "header-item");
 
   const renderHeaderLeft = function () {
     return <ContentHeaderLeft></ContentHeaderLeft>;
