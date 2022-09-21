@@ -1,3 +1,7 @@
+body {
+  overflow: hidden;
+  margin: 0;
+}
 .z-header-box {
   background-color: #ffffff;
   display: grid;

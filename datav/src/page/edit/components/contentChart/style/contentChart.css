@@ -1,0 +1,53 @@
+body {
+  overflow: hidden;
+  margin: 0;
+}
+.z-content-chart {
+  width: 330px;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+}
+.z-content-chart-top-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 330px;
+  height: 40px;
+  padding-left: 16px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background-color: #f2f3f5;
+}
+.z-content-chart-content-container {
+  width: 330px;
+  height: calc(100vh - 60px - 40px);
+  background-color: #f8f8f9;
+}
+.z-content-chart-content-container-menu-container {
+  width: 80px;
+  height: 100%;
+  background-color: #f2f3f5;
+}
+.z-content-chart-content-container-second-container {
+  display: flex;
+  width: 250px;
+  height: 100%;
+  background-color: #f2f3f5;
+}
+.z-content-chart-content-container-icon-container {
+  display: flex;
+  width: 80px;
+  height: 60px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.z-content-chart-content-container .ant-menu {
+  background-color: #f2f3f5 !important;
+  background: #f2f3f5 !important;
+}
+.z-content-chart-content-container .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: rgba(81, 214, 169, 0.1);
+}

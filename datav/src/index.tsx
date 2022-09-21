@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from 'react-redux';
 // import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -10,6 +11,9 @@ import EditLayout from "./page/edit";
 import "./App.css";
 import "antd/dist/antd.variable.min.css";
 import { ConfigProvider } from "antd";
+import { store } from './app/store';
+
+
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -22,6 +26,7 @@ ConfigProvider.config({
 
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <ConfigProvider>
       <BrowserRouter>
         <Routes>
@@ -30,6 +35,7 @@ root.render(
         </Routes>
       </BrowserRouter>
     </ConfigProvider>
+    </Provider>
   </React.StrictMode>
 );
 
