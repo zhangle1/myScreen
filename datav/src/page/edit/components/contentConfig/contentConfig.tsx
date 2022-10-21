@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components/macro";
 import { useElementSize } from "usehooks-ts";
+import Ruler from "../../../../components/ruler/ruler";
 
 export function ContentConfig() {
   const screenClient = {
@@ -43,7 +44,24 @@ export function ContentConfig() {
       <div className="content-edit-wrapper">
         <div ref={editRef}  className="contont-edit-main">
         {/* <div className="content-edit-main-scale"> */}
-           <div>  宽度{editWidth} 高度 {editHeight}  屏幕编辑区域宽度{screen.width}  屏幕编辑区伸缩后宽度{editWidth}  屏幕编辑区域高度{editHeight}  屏幕编辑区伸缩后高度{screen.height*screen.scale}伸缩率{screen.scale}</div>
+           {/* <div>  宽度{editWidth} 高度 {editHeight}  屏幕编辑区域宽度{screen.width}  屏幕编辑区伸缩后宽度{editWidth}  屏幕编辑区域高度{editHeight}  屏幕编辑区伸缩后高度{screen.height*screen.scale}伸缩率{screen.scale}</div> */}
+           <Ruler
+        height={30}
+        width={screen.width}
+        zoom={screen.scale}
+        min={0}
+        
+        scaleLineStyle={{
+          shortLength: 5,
+          mediumLength: 7,
+          longLength: 70,
+        }}
+        textFormat={(val: number) => {
+          return `${val}px`;
+        }}
+
+      />
+
           <div className="content-edit-main-content"></div>
           {/* </div> */}
       
