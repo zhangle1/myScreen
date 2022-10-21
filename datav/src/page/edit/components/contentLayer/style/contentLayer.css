@@ -1,0 +1,27 @@
+body {
+  overflow: hidden;
+  margin: 0;
+}
+.z-content-layers {
+  width: 200px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.z-content-layers-top-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 330px;
+  height: 40px;
+  padding-left: 16px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background-color: #e5e6eb;
+}
+.z-content-layers-content-container {
+  width: 200px;
+  height: calc(100vh - 60px - 40px);
+  background-color: #F2F3F5;
+  display: flex;
+}

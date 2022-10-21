@@ -16,7 +16,9 @@
         height: calc(100vh - @header-height );
         display: flex;
         flex-direction: column;
-
+        -moz-user-select: none;
+        -khtml-user-select: none;
+         user-select: none;
 
         &-top-container {
                 display: flex;
@@ -35,9 +37,7 @@
                 width: 330px;
                 height: calc(100vh - @header-height - 40px);
                 background-color: #f8f8f9;
-
-
-
+                display: flex;
 
 
                 &-menu-container {
@@ -46,12 +46,69 @@
                         background-color: #f2f3f5;
                 }
 
-
                 &-second-container {
                         display: flex;
                         width: 250px;
                         height: 100%;
-                        background-color: #f2f3f5;
+                        background: #F9FBFC;
+
+                        &-tab-container {
+                                width: 80px;
+                                height: 100%;
+                                // border-left: 1px #000000;
+                        }
+
+                        &-list-container {
+                                flex: 1;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                 overflow-y: scroll;
+                                padding-left: 8px;
+                                padding-right: 2px;
+                                .z-content-charts-item-box {
+                                        
+                                        margin-bottom: 15px;
+                                        width: 86%;
+                                        overflow: hidden;
+                                        border-radius: 6px;
+                                        cursor: pointer;
+                                        border: 1px solid rgba(0, 0, 0, 0);
+                                        background: #F9FBFC;
+                                        &:hover {
+                                                background: #F9FBFC;
+                                        }
+
+                                    .list-header{
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: space-around;
+                                        padding: 2px 4px;
+                                        background: #E8E6EE;
+                                        &-text{
+                                                font-size: 12px;
+                                                margin-left: 8px;
+                                                -moz-user-select: none;
+                                                -khtml-user-select: none;
+                                                user-select: none;
+                                        }
+                                    }
+                                    
+                                    .list-center{
+                                        padding: 6px 0;
+                                        height: 100px;
+                                        
+                                         overflow: hidden;
+                                        .list-img {
+                                                height: 100%;
+                                                border-radius: 6px;
+                                              }
+                                    }
+                                      
+                                }
+
+                        }
+
                 }
 
 
