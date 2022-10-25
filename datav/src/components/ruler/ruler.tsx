@@ -4,13 +4,13 @@ import { Props, LineStyle, TextStyle } from "./_type";
 
 const Ruler: FC<Props> = (props: Props) => {
   const {
-    backgroundColor = "#000",
+    backgroundColor = "#fff",
     min = 0,
     max = 500,
     zoom = 1,
     horizontal = true,
   } = props;
-  const { height = 30, width = 500 } = props;
+  const { height = 30, width = 500 ,left=0,top=0} = props;
   let canvasHeight = height,
     canvasWidth = width;
   if (!horizontal) {
@@ -19,7 +19,7 @@ const Ruler: FC<Props> = (props: Props) => {
   const { scaleLineStyle = {}, textStyle = {} } = props;
 
   const {
-    color: lineColor = "#FFF",
+    color: lineColor = "#000",
     width: lineWidth = 1,
     shortLength = canvasHeight * 0.3,
     mediumLength = canvasHeight * 0.5,
@@ -27,7 +27,7 @@ const Ruler: FC<Props> = (props: Props) => {
   }: LineStyle = scaleLineStyle;
 
   const {
-    color: textColor = "#FFF",
+    color: textColor = "#000",
     size: textSize = 12,
     align: textAlign = "left",
     baseLine: textBaseLine = "middle",
@@ -181,11 +181,11 @@ const Ruler: FC<Props> = (props: Props) => {
   }, [props]);
 
   return (
-    <canvas ref={ruler}>
+    <canvas ref={ruler} style={{marginLeft:left,marginTop:top,position:"absolute"}}>
       Your browser does not support the HTML5 canvas tag.
     </canvas>
   );
 };
 
 
-export default React.memo(Ruler)
+export default Ruler

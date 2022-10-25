@@ -5,40 +5,116 @@ import Ruler from "../../../../components/ruler/ruler";
 
 export function ContentConfig() {
   const screenClient = {
-    width: 800,
-    height: 1600,
+    width: 500,
+    height: 2200,
   };
 
   const [editRef, { width: editWidth, height: editHeight }] = useElementSize();
+  var initScale=1
+  var rulerWidth=0
+  var rulerHeight=0
+  var scaleWidth = (editWidth) / screenClient.width;
+  var scaleHeight = (editHeight) / screenClient.height;
+  if (scaleHeight >= 1 && scaleWidth >= 1) {
+    rulerWidth=editWidth
+    rulerHeight=editHeight
+  } else if (scaleWidth > scaleHeight) {
+    initScale=(editHeight) / screenClient.height
+    if(scaleHeight>=1){
+      rulerHeight=editHeight
+    }else{
+      rulerHeight=screenClient.height
+    }
+    if(scaleWidth>=1){
+      rulerWidth=editWidth
+    }else{
+      rulerWidth=screenClient.width
+    }
+  } else {
+    initScale=(editHeight) / screenClient.height
+    if(scaleHeight>=1){
+      rulerHeight=editHeight
+    }else{
+      rulerHeight=screenClient.height
+    }
+    if(scaleWidth>=1){
+      rulerWidth=editWidth
+    }else{
+      rulerWidth=screenClient.width
+    }
+  }
 
   const [screen, setScreen] = useState({
-    width: 1920,
-    height: 1600,
-    scale: 1,
+    width: screenClient.width,
+    height: screenClient.height,
+    scale: initScale,
+    rulerWidth:rulerWidth,
+    rulerHeight:rulerHeight
   });
-
+  // changeScreen();
   useEffect(() => {
-      var scaleWidth=  (editWidth)/screen.width
-      var scaleHeight= (editHeight)/ screen.height
-      var scale=1
-      if(scaleWidth>=1&&scaleHeight>=1){
-        setScreen({    width: screenClient.width,
-            height: screenClient.height,
-            scale: scale,})
-      }else if(scaleWidth>scaleHeight){
-        setScreen({    width: screenClient.width,
-            height: screenClient.height,
-            scale: scaleHeight,})
+      changeScreen();
+      console.log("刷新触发了")
+  }, [editWidth,editHeight]);
+
+  function changeScreen() {
+    var scaleWidth = (editWidth) / screen.width;
+    var scaleHeight = (editHeight) / screen.height;
+    var scale = 1;
+    var rulerWidth=0
+    var rulerHeight=0
+    if (scaleWidth >= 1 && scaleHeight >= 1) {
+      setScreen({
+        width: screenClient.width,
+        height: screenClient.height,
+        scale: scale,
+        rulerWidth:editWidth-40,
+        rulerHeight:editHeight-40
+      });
+    } else if (scaleWidth > scaleHeight) {
+
+      if(scaleHeight>=1){
+        rulerHeight=editHeight-40
       }else{
-        setScreen({    width: screenClient.width,
-            height: screenClient.height,
-            scale: scaleWidth,})
+        rulerHeight=screenClient.height*scaleHeight
+      }
+      if(scaleWidth>=1){
+        rulerWidth=editWidth-40
+      }else{
+        rulerWidth=screenClient.width*scaleWidth
       }
 
-  }, [editWidth,editHeight,screenClient.width]);
 
+      setScreen({
+        width: screenClient.width,
+        height: screenClient.height,
+        scale: scaleHeight,
+        rulerWidth:rulerWidth,
+        rulerHeight:rulerHeight
+      });
+    } else {
+      if(scaleHeight>=1){
+        rulerHeight=editHeight-40
+      }else{
+        rulerHeight=screenClient.height*scaleHeight
+      }
+      if(scaleWidth>=1){
+        rulerWidth=editWidth-40
+      }else{
+        rulerWidth=screenClient.width*scaleWidth
+      }
+
+      setScreen({
+        width: screenClient.width,
+        height: screenClient.height,
+        scale: scaleWidth,
+        rulerWidth:rulerWidth,
+        rulerHeight:rulerHeight
+      });
+    }
+  }
   return (
-    <Wrapper contentWidth={screen.width-80/screen.scale}  contentHeight={screen.height-50/screen.scale} 
+    <Wrapper contentWidth={screen.width}  contentHeight={screen.height} 
         scale={screen.scale}
     >
       <div className="content-edit-wrapper">
@@ -47,10 +123,28 @@ export function ContentConfig() {
            {/* <div>  宽度{editWidth} 高度 {editHeight}  屏幕编辑区域宽度{screen.width}  屏幕编辑区伸缩后宽度{editWidth}  屏幕编辑区域高度{editHeight}  屏幕编辑区伸缩后高度{screen.height*screen.scale}伸缩率{screen.scale}</div> */}
            <Ruler
         height={30}
-        width={screen.width}
+        left={30}
+        width={screen.rulerWidth}
         zoom={screen.scale}
         min={0}
-        
+        scaleLineStyle={{
+          shortLength: 5,
+          mediumLength: 7,
+          longLength: 70,
+        }}
+        textFormat={(val: number) => {
+          return `${val}px`;
+        }}
+
+      />
+
+<Ruler
+        height={screen.rulerHeight}
+        top={30}
+        width={30}
+        zoom={screen.scale}
+        horizontal={false}
+        min={0}
         scaleLineStyle={{
           shortLength: 5,
           mediumLength: 7,
@@ -87,8 +181,11 @@ const Wrapper = styled.div<{ contentWidth: number; contentHeight: number,scale: 
       position: relative;
       flex: 1;
       width: 100%;
-  
-      background: gray;
+      background-image: linear-gradient(#fafafc 14px, transparent 0), linear-gradient(90deg, transparent 14px, #373739 0);
+      background-size: 15px 15px, 15px 15px;
+      /* background-image: linear-gradient(#fafafc 14px, transparent 0), linear-gradient(90deg, transparent 14px, #373739 0); */
+      /* background-color: #fafafc; */
+      /* background: gray; */
         width: 100%;
         height: 100%;
         overflow: scroll;
@@ -111,7 +208,9 @@ const Wrapper = styled.div<{ contentWidth: number; contentHeight: number,scale: 
         transform-origin: left top;
         transform: scale(${p=>p.scale});
 
-        background: red;
+        background-color: #f2f3f5;    
+        border-radius: 10px;
+        box-shadow: 0 8px 10px rgb(0 0 0 / 7%);
       }
       }
   

@@ -35,5 +35,7 @@ export type Props = {
     zoom?: number;
     horizontal?: boolean;
     textFormat?: (scale: number) => string;
+    left?:number,
+    top?: number,
   };
   
