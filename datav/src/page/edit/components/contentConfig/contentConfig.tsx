@@ -2,120 +2,26 @@ import { useEffect, useState } from "react";
 import styled from "styled-components/macro";
 import { useElementSize } from "usehooks-ts";
 import Ruler from "../../../../components/ruler/ruler";
+import useEditScreenElementSize from "./hooks/useEditScreenElementSize";
 
 export function ContentConfig() {
   const screenClient = {
-    width: 500,
-    height: 2200,
+    width: 1920,
+    height: 1000,
   };
 
-  const [editRef, { width: editWidth, height: editHeight }] = useElementSize();
-  var initScale=1
-  var rulerWidth=0
-  var rulerHeight=0
-  var scaleWidth = (editWidth) / screenClient.width;
-  var scaleHeight = (editHeight) / screenClient.height;
-  if (scaleHeight >= 1 && scaleWidth >= 1) {
-    rulerWidth=editWidth
-    rulerHeight=editHeight
-  } else if (scaleWidth > scaleHeight) {
-    initScale=(editHeight) / screenClient.height
-    if(scaleHeight>=1){
-      rulerHeight=editHeight
-    }else{
-      rulerHeight=screenClient.height
-    }
-    if(scaleWidth>=1){
-      rulerWidth=editWidth
-    }else{
-      rulerWidth=screenClient.width
-    }
-  } else {
-    initScale=(editHeight) / screenClient.height
-    if(scaleHeight>=1){
-      rulerHeight=editHeight
-    }else{
-      rulerHeight=screenClient.height
-    }
-    if(scaleWidth>=1){
-      rulerWidth=editWidth
-    }else{
-      rulerWidth=screenClient.width
-    }
-  }
+  const [editRef,{
+    rulerHeight,rulerWidth,scale,screenHeight,screenWidth
+  }]= useEditScreenElementSize({ScreenHeight:screenClient.height
+    ,ScreenWidth:screenClient.width})
 
-  const [screen, setScreen] = useState({
-    width: screenClient.width,
-    height: screenClient.height,
-    scale: initScale,
-    rulerWidth:rulerWidth,
-    rulerHeight:rulerHeight
-  });
-  // changeScreen();
-  useEffect(() => {
-      changeScreen();
-      console.log("刷新触发了")
-  }, [editWidth,editHeight]);
+      console.log("screen:"+JSON.stringify({
+        rulerHeight,rulerWidth,scale,screenHeight,screenWidth
+      }))
 
-  function changeScreen() {
-    var scaleWidth = (editWidth) / screen.width;
-    var scaleHeight = (editHeight) / screen.height;
-    var scale = 1;
-    var rulerWidth=0
-    var rulerHeight=0
-    if (scaleWidth >= 1 && scaleHeight >= 1) {
-      setScreen({
-        width: screenClient.width,
-        height: screenClient.height,
-        scale: scale,
-        rulerWidth:editWidth-40,
-        rulerHeight:editHeight-40
-      });
-    } else if (scaleWidth > scaleHeight) {
-
-      if(scaleHeight>=1){
-        rulerHeight=editHeight-40
-      }else{
-        rulerHeight=screenClient.height*scaleHeight
-      }
-      if(scaleWidth>=1){
-        rulerWidth=editWidth-40
-      }else{
-        rulerWidth=screenClient.width*scaleWidth
-      }
-
-
-      setScreen({
-        width: screenClient.width,
-        height: screenClient.height,
-        scale: scaleHeight,
-        rulerWidth:rulerWidth,
-        rulerHeight:rulerHeight
-      });
-    } else {
-      if(scaleHeight>=1){
-        rulerHeight=editHeight-40
-      }else{
-        rulerHeight=screenClient.height*scaleHeight
-      }
-      if(scaleWidth>=1){
-        rulerWidth=editWidth-40
-      }else{
-        rulerWidth=screenClient.width*scaleWidth
-      }
-
-      setScreen({
-        width: screenClient.width,
-        height: screenClient.height,
-        scale: scaleWidth,
-        rulerWidth:rulerWidth,
-        rulerHeight:rulerHeight
-      });
-    }
-  }
   return (
-    <Wrapper contentWidth={screen.width}  contentHeight={screen.height} 
-        scale={screen.scale}
+    <Wrapper contentWidth={screenWidth}  contentHeight={screenHeight} 
+        scale={scale}
     >
       <div className="content-edit-wrapper">
         <div ref={editRef}  className="contont-edit-main">
@@ -124,8 +30,8 @@ export function ContentConfig() {
            <Ruler
         height={30}
         left={30}
-        width={screen.rulerWidth}
-        zoom={screen.scale}
+        width={rulerWidth}
+        zoom={scale}
         min={0}
         scaleLineStyle={{
           shortLength: 5,
@@ -139,10 +45,10 @@ export function ContentConfig() {
       />
 
 <Ruler
-        height={screen.rulerHeight}
+        height={rulerHeight}
         top={30}
         width={30}
-        zoom={screen.scale}
+        zoom={scale}
         horizontal={false}
         min={0}
         scaleLineStyle={{
