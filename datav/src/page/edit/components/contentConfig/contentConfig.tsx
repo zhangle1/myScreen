@@ -1,11 +1,16 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import * as React from "react";
 import styled from "styled-components/macro";
-import { useElementSize } from "usehooks-ts";
 import Ruler from "../../../../components/ruler/ruler";
 import useEditScreenElementSize from "./hooks/useEditScreenElementSize";
-import Moveable from "react-moveable";
 import classNames from "classnames";
 import { usePointStyle } from "./hooks/useStyle";
+
+import Moveable from "react-moveable";
+import { Rnd, Props } from "react-rnd";
+import { Button } from "antd";
+import { FC, ReactNode, useState } from "react";
+import { json } from "stream/consumers";
+import { createMockCompontent } from "../../package/Components";
 
 interface ComponmentProps {
   left?: number;
@@ -14,54 +19,35 @@ interface ComponmentProps {
   height: number;
 }
 
-export function ContentConfig() {
+const ContentConfig = (props: any) => {
   const screenClient = {
     width: 1000,
     height: 1000,
   };
 
-  const chartContent = {
-    top: 200,
-    left: 200,
-    width: 300,
-    height: 300,
-  };
+  const [chartCompontents, setChartCompontents] = useState(
+    createMockCompontent()
+  );
 
+  const [contentLoading, SeContentLoading] = useState(true);
   // 锚点
   const pointList = ["t", "r", "b", "l", "lt", "rt", "lb", "rb"];
 
   // 光标朝向
   const cursorResize = ["n", "e", "s", "w", "nw", "ne", "sw", "se"];
 
-
-
-
-
   const [
     editRef,
     { rulerHeight, rulerWidth, scale, screenHeight, screenWidth },
-  ] = useEditScreenElementSize({
-    ScreenHeight: screenClient.height,
-    ScreenWidth: screenClient.width,
-  });
-
-
-  function createPointList(){
-
-
-    return pointList.map(src=>{
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-    const style=  usePointStyle({point:src,width:chartContent.width,height:chartContent.height,index:0})
-
-
-      var clz=  classNames(src)
- 
-       return (<ShapePointWrapper className={clz}   {...style} ></ShapePointWrapper>)
- 
-     })
- 
-   }
-
+  ] = useEditScreenElementSize(
+    {
+      ScreenHeight: screenClient.height,
+      ScreenWidth: screenClient.width,
+    },
+    () => {
+      SeContentLoading(false);
+    }
+  );
 
   function handleEvent(event) {
     console.log(event);
@@ -84,7 +70,10 @@ export function ContentConfig() {
     console.log(event);
   }
 
-
+  function ComponmentMouseDown(event) {
+    console.log("ComponmentMouseDown:触发");
+    console.log(event);
+  }
 
   return (
     <Wrapper
@@ -92,7 +81,7 @@ export function ContentConfig() {
       contentHeight={screenHeight}
       scale={scale}
     >
-      <div className="content-edit-wrapper"  >
+      <div className="content-edit-wrapper">
         <div
           ref={editRef}
           className="contont-edit-main"
@@ -137,19 +126,74 @@ export function ContentConfig() {
           />
 
           <div className="content-edit-main-content" onMouseDown={handleEvent}>
-            <ShapeBoxWrapper left={chartContent.left} top={chartContent.top}>
-              <TestWrapper
-                width={chartContent.width}
-                height={chartContent.height}
-                left={chartContent.left}
-                top={chartContent.top}
-              ></TestWrapper>
-
+            {/* <ShapeBoxWrapper
+              left={chartContent.left}
+              top={chartContent.top}
+              onMouseDown={ComponmentMouseDown}
+            >
+   
               {createPointList()}
+            </ShapeBoxWrapper> */}
+            {/* <Button>你好啊</Button> */}
+            {!contentLoading ? (
+              chartCompontents.map((src, index) => {
+                return (
+                  <Rnd
+                    key={index}
+                    style={{
+                      display: "flex",
+                      // alignItems: "center",
+                      // justifyContent: "center",
+                      border: "solid 1px #ddd",
+                      background: "#f0f0f0",
+                    }}
+                    size={{
+                      height: src.height,
+                      width: src.width,
+                    }}
+                    position={{
+                      x: src.left,
+                      y: src.top,
+                    }}
+                    onDragStop={(e, d) => {
+                      const newChartCompontents = [...chartCompontents];
 
+                      newChartCompontents[index] = {
+                        top: d.y,
+                        left: d.x,
+                        width: src.width,
+                        height: src.height,
+                      };
+                      setChartCompontents(newChartCompontents);
+                    }}
+                    onResize={(e, direction, ref, delta, position) => {
+                      const newChartCompontents = [...chartCompontents];
 
+                      newChartCompontents[index] = {
+                        top: position.y,
+                        left: position.x,
+                        width: ref.offsetWidth,
+                        height: ref.offsetHeight,
+                      };
 
-            </ShapeBoxWrapper>
+                      setChartCompontents(newChartCompontents);
+                    }}
+                  >
+                    <TestWrapper
+                      width={src.width}
+                      height={src.height}
+                      left={src.left}
+                      top={src.top}
+                    >
+                      {/* y:{src.top}x:{src.left} 高:{src.height}宽:{src.width} */}
+                    </TestWrapper>
+                  </Rnd>
+                );
+              })
+            ) : (
+              <></>
+            )}
+            {/* <Moveable flushSync={flushSync} /> */}
           </div>
         </div>
 
@@ -158,8 +202,9 @@ export function ContentConfig() {
       <div className="content-configuration-container"></div>
     </Wrapper>
   );
-}
+};
 
+export default ContentConfig;
 const ShapeBoxWrapper = styled.div<ComponmentProps>`
   position: absolute;
   cursor: move;
@@ -168,41 +213,40 @@ const ShapeBoxWrapper = styled.div<ComponmentProps>`
   top: ${(p) => p.top}px;
 `;
 
-const ShapePointWrapper =styled.div<{left: number, top: number}>`
-    z-index: 1;
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border: 3px solid #51d6a9 ;
-    left: ${p=>p.left}px;
-    top: ${p=>p.top}px;
-    border-radius: 8px;
-    background-color: #fff;
-    transform: translate(-40%, -30%);
-    &.t {
-      width: 60px;
-      transform: translate(-50%, -50%);
-    }
-    &.b {
-      width: 60px;
-      transform: translate(-50%, -30%);
-    }
-    &.l,
-    &.r {
-      height: 60px;
-    }
-    &.r {
-      transform: translate(-20%, -50%);
-    }
-    &.l {
-      transform: translate(-45%, -50%);
-    }
-    &.rt,
-    &.rb {
-      transform: translate(-30%, -30%);
-    }
-`
-
+const ShapePointWrapper = styled.div<{ left: number; top: number }>`
+  z-index: 1;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #51d6a9;
+  left: ${(p) => p.left}px;
+  top: ${(p) => p.top}px;
+  border-radius: 8px;
+  background-color: #fff;
+  transform: translate(-40%, -30%);
+  &.t {
+    width: 60px;
+    transform: translate(-50%, -50%);
+  }
+  &.b {
+    width: 60px;
+    transform: translate(-50%, -50%);
+  }
+  &.l,
+  &.r {
+    height: 60px;
+  }
+  &.r {
+    transform: translate(-20%, -50%);
+  }
+  &.l {
+    transform: translate(-45%, -50%);
+  }
+  &.rt,
+  &.rb {
+    transform: translate(-30%, -30%);
+  }
+`;
 
 const TestWrapper = styled.div<{
   width: number;

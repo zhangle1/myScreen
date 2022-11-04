@@ -16,7 +16,9 @@ interface ScreenOutPut{
     screenHeight: number
 }
 
-function useEditScreenElementSize<T extends HTMLElement = HTMLDivElement>(props:ScreenProps):[
+function useEditScreenElementSize<T extends HTMLElement = HTMLDivElement>(props:ScreenProps,
+  onContentChange:Function
+  ):[
     (node: T | null) => void,
     ScreenOutPut,
 ]{
@@ -99,6 +101,7 @@ function useEditScreenElementSize<T extends HTMLElement = HTMLDivElement>(props:
     useIsomorphicLayoutEffect(() => {
         console.log("触发了几次")
         handleScreenSize()
+        onContentChange()
         // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [ref?.offsetHeight, ref?.offsetWidth])
 

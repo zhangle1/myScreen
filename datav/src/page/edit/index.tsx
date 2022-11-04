@@ -5,7 +5,7 @@ import { Layout } from "antd";
 import { Content } from "antd/lib/layout/layout";
 import ContentChart from "./components/contentChart/contentChart";
 import ContentLayer from "./components/contentLayer/contentLayer";
-import { ContentConfig } from "./components/contentConfig/contentConfig";
+import ContentConfig from "./components/contentConfig/contentConfig";
 
 
 export interface EditLayoutProps {}
