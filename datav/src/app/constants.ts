@@ -1,0 +1,60 @@
+export enum DataViewFieldType {
+  STRING = "STRING",
+  NUMERIC = "NUMERIC",
+  DATE = "DATE",
+}
+
+export enum ChartDataViewFieldCategory {
+  Field = "field",
+  Hierarchy = "hierarchy",
+  Variable = "variable",
+  ComputedField = "computedField",
+  AggregateComputedField = "aggregateComputedField",
+  DateLevelComputedField = "dateLevelComputedField",
+}
+
+
+export const ChartStyleSectionComponentType = {
+    CHECKBOX: 'checkbox',
+    INPUT: 'input',
+    SWITCH: 'switch',
+    SELECT: 'select',
+    FONT: 'font',
+    FONT_FAMILY: 'fontFamily',
+    FONT_SIZE: 'fontSize',
+    FONT_COLOR: 'fontColor',
+    FONT_STYLE: 'fontStyle',
+    FONT_WEIGHT: 'fontWeight',
+    INPUT_NUMBER: 'inputNumber',
+    INPUT_PERCENTAGE: 'inputPercentage',
+    SLIDER: 'slider',
+    GROUP: 'group',
+    REFERENCE: 'reference',
+    TABS: 'tabs',
+    LIST_TEMPLATE: 'listTemplate',
+    TABLE_HEADER: 'tableHeader',
+    LINE: 'line',
+    MARGIN_WIDTH: 'marginWidth',
+    TEXT: 'text',
+    CONDITIONAL_STYLE: 'conditionalStylePanel',
+    RADIO: 'radio',
+  
+    // Customize Component
+    FONT_ALIGNMENT: 'fontAlignment',
+    NAME_LOCATION: 'nameLocation',
+    LABEL_POSITION: 'labelPosition',
+    LEGEND_TYPE: 'legendType',
+    LEGEND_POSITION: 'legendPosition',
+    SCORECARD_LIST_TEMPLATE: 'scorecardListTemplate',
+    SCORECARD_CONDITIONAL_STYLE: 'scorecardConditionalStyle',
+    PIVOT_SHEET_THEME: 'pivotSheetTheme',
+    BACKGROUND: 'background',
+    WIDGET_BORDER: 'widgetBorder',
+    TIMER_FORMAT: 'timerFormat',
+    CHECKBOX_MODAL: 'checkboxModal',
+    INTERACTION_DRILL_THROUGH_PANEL: 'interaction.drillThrough',
+    INTERACTION_CROSS_FILTERING: 'interaction.crossFiltering',
+    INTERACTION_VIEW_DETAIL_PANEL: 'interaction.viewDetail',
+    DATA_ZOOM_PANEL: 'dataZoomPanel',
+    Y_AXIS_NUMBER_FORMAT_PANEL: 'YAxisNumberFormatPanel',
+  };
