@@ -11,6 +11,9 @@ import { Button } from "antd";
 import { FC, ReactNode, useState } from "react";
 import { json } from "stream/consumers";
 import { createMockCompontent } from "../../package/Components";
+import { useAppSelector } from "../../../../app/hooks";
+import { selectBoard } from "../../../../app/slice/boardSlice";
+import { getJsonConfigs } from "../../../../util";
 
 interface ComponmentProps {
   left?: number;
@@ -20,29 +23,31 @@ interface ComponmentProps {
 }
 
 const ContentConfig = (props: any) => {
-  const screenClient = {
-    width: 1000,
-    height: 1000,
-  };
+
+   const board= useAppSelector(selectBoard)
+   const [width, height] = getJsonConfigs(board.boardConfig.jsonConfig, ['size'], ['width', 'height']);
+
+  // console.log("从Json获取到的属性width:"+width+"height:"+height);
+
+
+  // const screenClient = {
+  //   width: 1000,
+  //   height: 1000,
+  // };
 
   const [chartCompontents, setChartCompontents] = useState(
     createMockCompontent()
   );
 
   const [contentLoading, SeContentLoading] = useState(true);
-  // 锚点
-  const pointList = ["t", "r", "b", "l", "lt", "rt", "lb", "rb"];
-
-  // 光标朝向
-  const cursorResize = ["n", "e", "s", "w", "nw", "ne", "sw", "se"];
 
   const [
     editRef,
     { rulerHeight, rulerWidth, scale, screenHeight, screenWidth },
   ] = useEditScreenElementSize(
     {
-      ScreenHeight: screenClient.height,
-      ScreenWidth: screenClient.width,
+      ScreenHeight: height,
+      ScreenWidth: width,
     },
     () => {
       SeContentLoading(false);
@@ -107,7 +112,6 @@ const ContentConfig = (props: any) => {
               return `${val}px`;
             }}
           />
-
           <Ruler
             height={rulerHeight}
             top={30}
