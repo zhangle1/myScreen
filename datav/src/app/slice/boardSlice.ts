@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ChartDataViewFieldCategory, ChartStyleSectionComponentType, DataViewFieldType } from "../constants";
 import { RootState } from "../store";
-import { BoardConfig } from "../types/boardType";
+import { BoardConfig } from "../types/config/boardType";
 
 
 export interface  BoardState {
@@ -20,13 +20,13 @@ const initialState: BoardState = {
                 rows:[{
                     label:'宽度',
                     key:'width',
-                    default:1000,
+                    default:1800,
                     comType:ChartStyleSectionComponentType.INPUT_NUMBER
                 },
                 {
                     label:'高度',
                     key:'height',
-                    default:1800,
+                    default:1000,
                     comType:ChartStyleSectionComponentType.INPUT_NUMBER
                 }
             ]

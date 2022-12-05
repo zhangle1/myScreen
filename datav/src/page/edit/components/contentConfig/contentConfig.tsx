@@ -14,6 +14,7 @@ import { createMockCompontent } from "../../package/Components";
 import { useAppSelector } from "../../../../app/hooks";
 import { selectBoard } from "../../../../app/slice/boardSlice";
 import { getJsonConfigs } from "../../../../util";
+import { selecteditBoard } from "../../../../app/childSlice/stackSlice";
 
 interface ComponmentProps {
   left?: number;
@@ -23,12 +24,16 @@ interface ComponmentProps {
 }
 
 const ContentConfig = (props: any) => {
-
-   const board= useAppSelector(selectBoard)
-   const [width, height] = getJsonConfigs(board.boardConfig.jsonConfig, ['size'], ['width', 'height']);
-
-  // console.log("从Json获取到的属性width:"+width+"height:"+height);
-
+  //  const board= useAppSelector(selectBoard)
+  const editBoard = useAppSelector(selecteditBoard);
+  //  editBoard.widgetRecord
+  const [width, height] = getJsonConfigs(
+    editBoard.dashBoard.config.jsonConfig,
+    ["size"],
+    ["width", "height"]
+  );
+  //  getJsonConfigs(editBoard.widgetRecord,['size'], ['width', 'height']);
+  console.log("从Json获取到的属性width:" + width + "height:" + height);
 
   // const screenClient = {
   //   width: 1000,
@@ -140,61 +145,114 @@ const ContentConfig = (props: any) => {
             </ShapeBoxWrapper> */}
             {/* <Button>你好啊</Button> */}
             {!contentLoading ? (
-              chartCompontents.map((src, index) => {
-                return (
-                  <Rnd
-                    key={index}
-                    style={{
-                      display: "flex",
-                      // alignItems: "center",
-                      // justifyContent: "center",
-                      border: "solid 1px #ddd",
-                      background: "#f0f0f0",
-                    }}
-                    size={{
-                      height: src.height,
-                      width: src.width,
-                    }}
-                    position={{
-                      x: src.left,
-                      y: src.top,
-                    }}
-                    onDragStop={(e, d) => {
-                      const newChartCompontents = [...chartCompontents];
-
-                      newChartCompontents[index] = {
-                        top: d.y,
-                        left: d.x,
-                        width: src.width,
-                        height: src.height,
-                      };
-                      setChartCompontents(newChartCompontents);
-                    }}
-                    onResize={(e, direction, ref, delta, position) => {
-                      const newChartCompontents = [...chartCompontents];
-
-                      newChartCompontents[index] = {
-                        top: position.y,
-                        left: position.x,
-                        width: ref.offsetWidth,
-                        height: ref.offsetHeight,
-                      };
-
-                      setChartCompontents(newChartCompontents);
-                    }}
-                  >
-                    <TestWrapper
-                      width={src.width}
-                      height={src.height}
-                      left={src.left}
-                      top={src.top}
+              Object.entries(editBoard.widgetRecord).map(
+                ([key, value], inedx) => {
+                  return (
+                    <Rnd
+                      key={key}
+                      style={{
+                        display: "flex",
+                        // alignItems: "center",
+                        // justifyContent: "center",
+                        border: "solid 1px #ddd",
+                        background: "#f0f0f0",
+                      }}
+                      size={{
+                        height: value.config.rect.height,
+                        width: value.config.rect.width,
+                      }}
+                      position={{
+                        x: value.config.rect.x,
+                        y: value.config.rect.y,
+                      }}
+                      onDragStop={(e, d) => {
+                        // const newChartCompontents = [...chartCompontents];
+                        // newChartCompontents[index] = {
+                        //   top: d.y,
+                        //   left: d.x,
+                        //   width: src.width,
+                        //   height: src.height,
+                        // };
+                        // setChartCompontents(newChartCompontents);
+                      }}
+                      onResize={(e, direction, ref, delta, position) => {
+                        // const newChartCompontents = [...chartCompontents];
+                        // newChartCompontents[index] = {
+                        //   top: position.y,
+                        //   left: position.x,
+                        //   width: ref.offsetWidth,
+                        //   height: ref.offsetHeight,
+                        // };
+                        // setChartCompontents(newChartCompontents);
+                      }}
                     >
-                      {/* y:{src.top}x:{src.left} 高:{src.height}宽:{src.width} */}
-                    </TestWrapper>
-                  </Rnd>
-                );
-              })
+                      <TestWrapper
+                        width={value.config.rect.width}
+                        height={value.config.rect.height}
+                        left={value.config.rect.x}
+                        top={value.config.rect.y}
+                      >
+                        {/* y:{src.top}x:{src.left} 高:{src.height}宽:{src.width} */}
+                      </TestWrapper>
+                    </Rnd>
+                  );
+                }
+              )
             ) : (
+              // chartCompontents.map((src, index) => {
+              //   return (
+              //     <Rnd
+              //       key={index}
+              //       style={{
+              //         display: "flex",
+              //         // alignItems: "center",
+              //         // justifyContent: "center",
+              //         border: "solid 1px #ddd",
+              //         background: "#f0f0f0",
+              //       }}
+              //       size={{
+              //         height: src.height,
+              //         width: src.width,
+              //       }}
+              //       position={{
+              //         x: src.left,
+              //         y: src.top,
+              //       }}
+              //       onDragStop={(e, d) => {
+              //         const newChartCompontents = [...chartCompontents];
+
+              //         newChartCompontents[index] = {
+              //           top: d.y,
+              //           left: d.x,
+              //           width: src.width,
+              //           height: src.height,
+              //         };
+              //         setChartCompontents(newChartCompontents);
+              //       }}
+              //       onResize={(e, direction, ref, delta, position) => {
+              //         const newChartCompontents = [...chartCompontents];
+
+              //         newChartCompontents[index] = {
+              //           top: position.y,
+              //           left: position.x,
+              //           width: ref.offsetWidth,
+              //           height: ref.offsetHeight,
+              //         };
+
+              //         setChartCompontents(newChartCompontents);
+              //       }}
+              //     >
+              //       <TestWrapper
+              //         width={src.width}
+              //         height={src.height}
+              //         left={src.left}
+              //         top={src.top}
+              //       >
+              //         {/* y:{src.top}x:{src.left} 高:{src.height}宽:{src.width} */}
+              //       </TestWrapper>
+              //     </Rnd>
+              //   );
+              // })
               <></>
             )}
             {/* <Moveable flushSync={flushSync} /> */}

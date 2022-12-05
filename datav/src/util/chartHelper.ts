@@ -1,4 +1,4 @@
-import { ChartStyleConfig } from "../app/types/ChartConfig";
+import { ChartStyleConfig } from "../app/types/config/ChartConfig";
 import { isEmptyArray } from "./object";
 
 

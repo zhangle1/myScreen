@@ -1,9 +1,7 @@
-import { ValueOf } from "../../types";
+import { ValueOf } from "../../../types";
 import {
-  ChartDataViewFieldCategory,
   ChartStyleSectionComponentType,
-  DataViewFieldType,
-} from "../constants";
+} from "../../constants";
 
 export type ChartConfigBase = {
   label?: string;

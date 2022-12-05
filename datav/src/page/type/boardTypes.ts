@@ -1,4 +1,4 @@
-import { ChartStyleConfig } from "../../app/types/ChartConfig";
+import { ChartStyleConfig } from "../../app/types/config/ChartConfig";
 
 export const BoardTypes = ['auto', 'free'] as const;
 BoardTypes.includes('auto');
