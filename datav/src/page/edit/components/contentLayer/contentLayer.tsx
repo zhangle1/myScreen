@@ -1,6 +1,7 @@
 import { Space } from "antd";
 import DynamicIcon from "../../../../icon/DynamicSvgIcon";
 import "./style/contentLayer.less"
+import styled from "styled-components/macro";
 
 
 export interface ContentLayerProps {}
@@ -15,13 +16,28 @@ const ContentLayer: ContentLayerInterface = (props: ContentLayerProps) => {
                 <DynamicIcon type="layer"></DynamicIcon>
 
             </Space>
+        </div>
 
-        </div>
-        <div className="z-content-layers-content-container">
+        <LayerColumn>
           
+        </LayerColumn>
+        {/* <div className="z-content-layers-content-container">
+    
       
-        </div>
+        </div> */}
   </div>;
 };
 
 export default ContentLayer;
+
+
+export const LayerColumn = styled.div<{}>`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: start;
+  align-items: center;
+`
+
+

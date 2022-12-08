@@ -138,17 +138,42 @@ const ContentChart: ContentChartInterface = (props: ContentChartProps) => {
           </div>
 
           <div className={contentMenuSecondListCLazz}>
-            <div className={contentChartsItemBoxClazz}>
+            <div className={contentChartsItemBoxClazz} onClick={(e)=>{
+                     
+
+
+            }}>
               <div className="list-header">
                 <MacOsControllerBtn></MacOsControllerBtn>
                 <span className="list-header-text">柱状图</span>
               </div>
               <div className="list-center">
                   <img className="list-img" src={require('./../../../../assert/images/chart/charts/bar_x.png')}>
-
                   </img>
               </div>
             </div>
+
+            {/* <div className={contentChartsItemBoxClazz}>
+              <div className="list-header">
+                <MacOsControllerBtn></MacOsControllerBtn>
+                <span className="list-header-text">横向柱状图</span>
+              </div>
+              <div className="list-center">
+                  <img className="list-img" src={require('./../../../../assert/images/chart/charts/bar_x.png')}>
+                  </img>
+              </div>
+            </div>
+
+            <div className={contentChartsItemBoxClazz}>
+              <div className="list-header">
+                <MacOsControllerBtn></MacOsControllerBtn>
+                <span className="list-header-text">胶囊柱图</span>
+              </div>
+              <div className="list-center">
+                  <img className="list-img" src={require('./../../../../assert/images/chart/charts/bar_x.png')}>
+                  </img>
+              </div>
+            </div> */}
           </div>
         </div>
       </div>

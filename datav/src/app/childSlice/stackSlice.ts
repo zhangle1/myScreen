@@ -1,9 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import uuid from "../../uuid";
 import { ChartStyleSectionComponentType } from "../constants";
 import { EditBoardStack } from "../slice/type";
 import { RootState } from "../store";
-import { WidgetConf, WidgetType } from "../types/config/widgetType";
+import { Widget, WidgetConf, WidgetType } from "../types/config/widgetType";
 import { Dashboard } from "../types/info/types";
 
 export type updateWidgetConf = {
@@ -42,7 +42,7 @@ export const initEditBoardState: EditBoardStack = {
   } as Dashboard,
   widgetRecord: {
     a: {
-      id: uuid(),
+      id: 'a',
       config: {
         index: 0,
         version: "1.0.0",
@@ -57,7 +57,7 @@ export const initEditBoardState: EditBoardStack = {
       },
     },
     b: {
-      id: uuid(),
+      id: 'b',
       config: {
         index: 0,
         version: "1.0.0",
@@ -77,12 +77,28 @@ export const initEditBoardState: EditBoardStack = {
 export const editBoardStackSlice = createSlice({
   name: "editBoard",
   initialState: initEditBoardState,
-  reducers: {},
-  extraReducers: (builder) => {},
+  reducers: {
+
+  
+
+    updateWidget(state,action: PayloadAction<Widget>){
+      const widget = action.payload;
+      debugger
+      state.widgetRecord[widget.id] = {...widget}
+    }
+
+  },
+  extraReducers: (builder) => {
+
+   
+  },
 });
 
 
-export const {} = editBoardStackSlice.actions
+export const {  
+  updateWidget,
+
+} = editBoardStackSlice.actions
 export const selecteditBoard = (state: RootState) =>state.editBoard
 
 export default editBoardStackSlice.reducer;

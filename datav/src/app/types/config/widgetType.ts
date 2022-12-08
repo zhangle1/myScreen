@@ -11,6 +11,22 @@ export const WidgetTypes = [
 ] as const;
 export type WidgetType = typeof WidgetTypes[number];
 
+export interface WidgetProto{
+  originalType: string;
+  toolkit: WidgetToolkit
+}
+
+
+export interface WidgetCreateProps{
+
+}
+
+export  interface WidgetToolkit{
+  create:(T: WidgetCreateProps)=>Widget;
+  getName:(local?:string)=>string;
+}
+
+
 export interface Widget {
   id: string;
   config: WidgetConf;

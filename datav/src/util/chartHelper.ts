@@ -22,7 +22,6 @@ export function getValue(
     keyPaths: Array<string>,
     targetKey = 'value',
 ){
-    debugger
     let iterators = configs || [];
     while (!isEmptyArray(iterators)) {
         const key = keyPaths?.shift();

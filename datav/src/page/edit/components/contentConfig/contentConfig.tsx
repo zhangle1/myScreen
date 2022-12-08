@@ -11,10 +11,16 @@ import { Button } from "antd";
 import { FC, ReactNode, useState } from "react";
 import { json } from "stream/consumers";
 import { createMockCompontent } from "../../package/Components";
-import { useAppSelector } from "../../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { selectBoard } from "../../../../app/slice/boardSlice";
 import { getJsonConfigs } from "../../../../util";
-import { selecteditBoard } from "../../../../app/childSlice/stackSlice";
+import {
+  selecteditBoard,
+  updateWidget,
+} from "../../../../app/childSlice/stackSlice";
+import { WidgetWrapper } from "../widgetWrapper/widgetWrapper";
+import { WidgetOperation } from "../widgetWrapper/widgetWrapper";
+import produce from 'immer';
 
 interface ComponmentProps {
   left?: number;
@@ -26,14 +32,14 @@ interface ComponmentProps {
 const ContentConfig = (props: any) => {
   //  const board= useAppSelector(selectBoard)
   const editBoard = useAppSelector(selecteditBoard);
+  const dispatch = useAppDispatch();
+
   //  editBoard.widgetRecord
   const [width, height] = getJsonConfigs(
     editBoard.dashBoard.config.jsonConfig,
     ["size"],
     ["width", "height"]
   );
-  //  getJsonConfigs(editBoard.widgetRecord,['size'], ['width', 'height']);
-  console.log("从Json获取到的属性width:" + width + "height:" + height);
 
   // const screenClient = {
   //   width: 1000,
@@ -148,54 +154,68 @@ const ContentConfig = (props: any) => {
               Object.entries(editBoard.widgetRecord).map(
                 ([key, value], inedx) => {
                   return (
-                    <Rnd
+                    <WidgetWrapper
                       key={key}
-                      style={{
-                        display: "flex",
-                        // alignItems: "center",
-                        // justifyContent: "center",
-                        border: "solid 1px #ddd",
-                        background: "#f0f0f0",
-                      }}
-                      size={{
-                        height: value.config.rect.height,
-                        width: value.config.rect.width,
-                      }}
-                      position={{
-                        x: value.config.rect.x,
-                        y: value.config.rect.y,
-                      }}
-                      onDragStop={(e, d) => {
-                        // const newChartCompontents = [...chartCompontents];
-                        // newChartCompontents[index] = {
-                        //   top: d.y,
-                        //   left: d.x,
-                        //   width: src.width,
-                        //   height: src.height,
-                        // };
-                        // setChartCompontents(newChartCompontents);
-                      }}
-                      onResize={(e, direction, ref, delta, position) => {
-                        // const newChartCompontents = [...chartCompontents];
-                        // newChartCompontents[index] = {
-                        //   top: position.y,
-                        //   left: position.x,
-                        //   width: ref.offsetWidth,
-                        //   height: ref.offsetHeight,
-                        // };
-                        // setChartCompontents(newChartCompontents);
-                      }}
-                    >
-                      <TestWrapper
-                        width={value.config.rect.width}
-                        height={value.config.rect.height}
-                        left={value.config.rect.x}
-                        top={value.config.rect.y}
-                      >
-                        {/* y:{src.top}x:{src.left} 高:{src.height}宽:{src.width} */}
-                      </TestWrapper>
-                    </Rnd>
+                      widget={value}
+                      onDragOrResizeAction={(
+                        WidgetOperation: WidgetOperation
+                      ) => {
+                     const newState =  produce(value,draft=>{
+                          draft.config.rect=WidgetOperation.newRect
+                        })
+                        dispatch(updateWidget(newState))
+                      } }          ></WidgetWrapper>
                   );
+
+                  // return (
+                  //   <Rnd
+                  //     key={key}
+                  //     style={{
+                  //       display: "flex",
+                  //       // alignItems: "center",
+                  //       // justifyContent: "center",
+                  //       border: "solid 1px #ddd",
+                  //       background: "#f0f0f0",
+                  //     }}
+                  //     size={{
+                  //       height: value.config.rect.height,
+                  //       width: value.config.rect.width,
+                  //     }}
+                  //     position={{
+                  //       x: value.config.rect.x,
+                  //       y: value.config.rect.y,
+                  //     }}
+                  //     onDragStop={(e, d) => {
+                  //       // const newChartCompontents = [...chartCompontents];
+                  //       // newChartCompontents[index] = {
+                  //       //   top: d.y,
+                  //       //   left: d.x,
+                  //       //   width: src.width,
+                  //       //   height: src.height,
+                  //       // };
+                  //       // setChartCompontents(newChartCompontents);
+                  //     }}
+                  //     onResize={(e, direction, ref, delta, position) => {
+                  //       // const newChartCompontents = [...chartCompontents];
+                  //       // newChartCompontents[index] = {
+                  //       //   top: position.y,
+                  //       //   left: position.x,
+                  //       //   width: ref.offsetWidth,
+                  //       //   height: ref.offsetHeight,
+                  //       // };
+                  //       // setChartCompontents(newChartCompontents);
+                  //     }}
+                  //   >
+                  //     <TestWrapper
+                  //       width={value.config.rect.width}
+                  //       height={value.config.rect.height}
+                  //       left={value.config.rect.x}
+                  //       top={value.config.rect.y}
+                  //     >
+                  //       {/* y:{src.top}x:{src.left} 高:{src.height}宽:{src.width} */}
+                  //     </TestWrapper>
+                  //   </Rnd>
+                  // );
                 }
               )
             ) : (
@@ -308,20 +328,6 @@ const ShapePointWrapper = styled.div<{ left: number; top: number }>`
   &.rb {
     transform: translate(-30%, -30%);
   }
-`;
-
-const TestWrapper = styled.div<{
-  width: number;
-  height: number;
-  top: number;
-  left: number;
-}>`
-  position: absolute;
-  /* left: ${(p) => p.left}px;
-        top: ${(p) => p.top}px; */
-  width: ${(p) => p.width}px;
-  height: ${(p) => p.height}px;
-  background-color: red;
 `;
 
 const Wrapper = styled.div<{
