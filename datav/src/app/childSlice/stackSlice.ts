@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import produce from "immer";
+import widgetManager from "../../page/utils/WidgetManager";
 import uuid from "../../uuid";
 import { ChartStyleSectionComponentType } from "../constants";
 import { EditBoardStack } from "../slice/type";
@@ -40,67 +42,52 @@ export const initEditBoardState: EditBoardStack = {
       ],
     },
   } as Dashboard,
-  widgetRecord: {
-    a: {
-      id: 'a',
-      config: {
-        index: 0,
-        version: "1.0.0",
-        type: "chart",
-        customConfig: {},
-        rect: {
-          x: 100,
-          y: 100,
-          width: 200,
-          height: 200,
-        },
-      },
-    },
-    b: {
-      id: 'b',
-      config: {
-        index: 0,
-        version: "1.0.0",
-        type: "chart",
-        customConfig: {},
-        rect: {
-          x: 300,
-          y: 300,
-          width: 200,
-          height: 200,
-        },
-      },
-    },
-  },
+  widgetRecord: {},
 };
 
 export const editBoardStackSlice = createSlice({
   name: "editBoard",
   initialState: initEditBoardState,
   reducers: {
+    addWidgets(state, action: PayloadAction<Widget[]>) {
+      const widgets = action.payload;
+      const board = state.dashBoard;
+      const { type } = board.config;
+      let maxWidgetIndex = 0;
 
-  
+      const widgetList = Object.values(state.widgetRecord || {});
+      if (widgetList.length) {
+        maxWidgetIndex = widgetList
+          .map((w) => w.config.index)
+          .sort((b, a) => a - b)[0];
+      }
 
-    updateWidget(state,action: PayloadAction<Widget>){
+      widgets.forEach((ele) => {
+        maxWidgetIndex++;
+        
+        const newName = widgetManager
+          .toolkit(ele.config.originalType)
+          .getName();
+
+          const newEle = produce(ele,draft => {
+              draft.config.index=maxWidgetIndex;
+              draft.config.name= draft.config.name
+          });
+
+          state.widgetRecord[newEle.id]=newEle
+      });
+
+    },
+    updateWidget(state, action: PayloadAction<Widget>) {
       const widget = action.payload;
-      debugger
-      state.widgetRecord[widget.id] = {...widget}
-    }
-
+      debugger;
+      state.widgetRecord[widget.id] = { ...widget };
+    },
   },
-  extraReducers: (builder) => {
-
-   
-  },
+  extraReducers: (builder) => {},
 });
 
-
-export const {  
-  updateWidget,
-
-} = editBoardStackSlice.actions
-export const selecteditBoard = (state: RootState) =>state.editBoard
+export const { updateWidget,addWidgets } = editBoardStackSlice.actions;
+export const selecteditBoard = (state: RootState) => state.editBoard;
 
 export default editBoardStackSlice.reducer;
-
-

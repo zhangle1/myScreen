@@ -23,7 +23,7 @@ export interface WidgetCreateProps{
 
 export  interface WidgetToolkit{
   create:(T: WidgetCreateProps)=>Widget;
-  getName:(local?:string)=>string;
+  getName:()=>string;
 }
 
 
@@ -33,6 +33,8 @@ export interface Widget {
 }
 
 export interface WidgetConf {
+  originalType: string;
+  name: string;
   version: string;
   type: WidgetType; //WidgetType
   customConfig: CustomConfig;

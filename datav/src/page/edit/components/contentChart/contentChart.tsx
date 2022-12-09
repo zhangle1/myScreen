@@ -1,7 +1,14 @@
 import { AutoComplete, Input, Menu, Space, Tabs } from "antd";
 import classNames from "classnames";
+import {
+  addWidgets,
+  selecteditBoard,
+} from "../../../../app/childSlice/stackSlice";
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import MacOsControllerBtn from "../../../../components/macOsControllBtn/macOsControllBtn";
 import DynamicIcon from "../../../../icon/DynamicSvgIcon";
+import { ORIGINAL_TYPE_MAP } from "../../../../util/constants";
+import { widgetManagerInstance } from "../../../utils/WidgetManager/widgetManager";
 import "./style/contentChart.less";
 // import style from "./style/contentChart.less"
 
@@ -16,8 +23,9 @@ interface ContentChartInterface extends React.FC<ContentChartProps> {}
 // }
 
 const ContentChart: ContentChartInterface = (props: ContentChartProps) => {
-  var clazz = classNames("z-content-chart");
+  const dispatch = useAppDispatch();
 
+  var clazz = classNames("z-content-chart");
   var topCLazz = classNames("z-content-chart-top-container");
 
   var contentClazz = classNames("z-content-chart-content-container");
@@ -39,9 +47,9 @@ const ContentChart: ContentChartInterface = (props: ContentChartProps) => {
   );
 
   var contentChartsItemBoxClazz = classNames("z-content-charts-item-box");
-  var contorlCloseBtn = classNames("btn","closeBg");
-  var contorlDeleteBtn = classNames("btn","deleteBg");
-  var contorlConfirmBtn = classNames("btn","confirmBg");
+  var contorlCloseBtn = classNames("btn", "closeBg");
+  var contorlDeleteBtn = classNames("btn", "deleteBg");
+  var contorlConfirmBtn = classNames("btn", "confirmBg");
   const menuItems = [
     {
       key: "1",
@@ -103,7 +111,6 @@ const ContentChart: ContentChartInterface = (props: ContentChartProps) => {
     },
   ] as any;
 
-
   return (
     <div className={clazz}>
       <div className={topCLazz}>
@@ -138,18 +145,25 @@ const ContentChart: ContentChartInterface = (props: ContentChartProps) => {
           </div>
 
           <div className={contentMenuSecondListCLazz}>
-            <div className={contentChartsItemBoxClazz} onClick={(e)=>{
-                     
-
-
-            }}>
+            <div
+              className={contentChartsItemBoxClazz}
+              onClick={(e) => {
+                dispatch(
+                  addWidgets([
+                    widgetManagerInstance.toolkit(ORIGINAL_TYPE_MAP.chart).create({})
+                  ])
+                );
+              }}
+            >
               <div className="list-header">
                 <MacOsControllerBtn></MacOsControllerBtn>
                 <span className="list-header-text">柱状图</span>
               </div>
               <div className="list-center">
-                  <img className="list-img" src={require('./../../../../assert/images/chart/charts/bar_x.png')}>
-                  </img>
+                <img
+                  className="list-img"
+                  src={require("./../../../../assert/images/chart/charts/bar_x.png")}
+                ></img>
               </div>
             </div>
 
