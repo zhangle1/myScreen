@@ -50,7 +50,7 @@ export const editBoardStackSlice = createSlice({
   initialState: initEditBoardState,
   reducers: {
     addWidgets(state, action: PayloadAction<Widget[]>) {
-      const widgets = action.payload;
+      const widgets = action.payload; 
       const board = state.dashBoard;
       const { type } = board.config;
       let maxWidgetIndex = 0;
@@ -80,7 +80,6 @@ export const editBoardStackSlice = createSlice({
     },
     updateWidget(state, action: PayloadAction<Widget>) {
       const widget = action.payload;
-      debugger;
       state.widgetRecord[widget.id] = { ...widget };
     },
   },

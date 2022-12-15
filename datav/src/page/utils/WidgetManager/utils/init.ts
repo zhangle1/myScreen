@@ -5,8 +5,10 @@ import uuid from "../../../../uuid";
 
 
 export const initFreeWidgetRect = ():RectConfig =>({
-    x: Math.ceil(Math.random() * 200),
-    y: Math.ceil(Math.random() * 200),
+    // x: Math.ceil(Math.random() * 200),
+    // y: Math.ceil(Math.random() * 200),
+    x: 100,
+    y: 100,
     width: 400,
     height: 300,
 })

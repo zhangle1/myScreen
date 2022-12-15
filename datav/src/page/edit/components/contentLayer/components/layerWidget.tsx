@@ -17,7 +17,6 @@ export const LayerWidget:LayerWidgetInterface=(props:LayerWidgetProps) =>{
 
     var wrapperProps={
         editing:widgetInfo.editing,
-        moved:widgetInfo.moved,
         selected:widgetInfo.selected,
     }
 

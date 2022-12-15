@@ -1,5 +1,11 @@
 import { Widget } from "../types/config/widgetType";
-import { Dashboard } from "../types/info/types";
+import { Dashboard, WidgetInfo } from "../types/info/types";
+
+
+export interface EditBoardState {
+    stack:EditBoardStack;
+    widgetInfoRecord: Record<string, WidgetInfo>;
+}
 
 
 

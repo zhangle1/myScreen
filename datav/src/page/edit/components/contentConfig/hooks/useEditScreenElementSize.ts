@@ -35,7 +35,7 @@ function useEditScreenElementSize<T extends HTMLElement = HTMLDivElement>(props:
 
   // Prevent too many rendering using useCallback
     const handleScreenSize = useCallback(()=>{
-        
+      
         var scaleWidth = (ref?.offsetWidth-50)/(props.ScreenWidth) ;
         var scaleHeight =(ref?.offsetHeight-50)/ (props.ScreenHeight) ;
         var scale = 1;

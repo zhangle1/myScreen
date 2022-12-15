@@ -8,7 +8,7 @@ import { usePointStyle } from "./hooks/useStyle";
 import Moveable from "react-moveable";
 import { Rnd, Props } from "react-rnd";
 import { Button } from "antd";
-import { FC, ReactNode, useState } from "react";
+import { FC, MouseEventHandler, ReactNode, useCallback, useState } from "react";
 import { json } from "stream/consumers";
 import { createMockCompontent } from "../../package/Components";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
@@ -20,7 +20,10 @@ import {
 } from "../../../../app/childSlice/stackSlice";
 import { WidgetWrapper } from "../widgetWrapper/widgetWrapper";
 import { WidgetOperation } from "../widgetWrapper/widgetWrapper";
-import produce from 'immer';
+import produce from "immer";
+import useBoardMouseListener, {
+  WrapperEvent,
+} from "./hooks/useBoardMouseListener";
 
 interface ComponmentProps {
   left?: number;
@@ -65,26 +68,52 @@ const ContentConfig = (props: any) => {
     }
   );
 
-  function handleEvent(event) {
-    console.log(event);
-  }
-  function MouseDown(event) {
-    console.log("handleMouseDown:触发");
-    console.log(event);
-  }
-  function drop(event) {
-    console.log("drop:触发");
-    console.log(event);
-  }
-  function dragOver(event) {
-    console.log("dragOver:触发");
-    console.log(event);
-  }
+  const [ref, setRef] = useState<HTMLDivElement | null>(null);
 
-  function dragEnter(event) {
-    console.log("dragEnter:触发");
-    console.log(event);
-  }
+  var mouseOver = (wrapperEvent) => {
+
+
+    var isSelected = null;
+
+    var clientX = wrapperEvent.clientX - ref?.getBoundingClientRect().left;
+    var clientY = wrapperEvent.clientY - ref?.getBoundingClientRect().top;
+
+    var list = Object.entries(editBoard.widgetRecord).filter(
+      ([key, value], index) => {
+        console.log(
+          "参数查看:" +
+            "clientX:" +
+            (clientX)+
+            "X左:" +
+            value.config.rect.x+
+            "宽度:" +
+            (value.config.rect.width )+
+            "伸缩率"+
+            scale
+        );
+        return (
+          (clientX/scale)>= value.config.rect.x &&
+          (clientX/scale) <= (value.config.rect.x + value.config.rect.width)  &&
+          (clientY/scale) >= value.config.rect.y  &&
+          (clientY/scale )<= (value.config.rect.y + value.config.rect.height) 
+        );
+      }
+    );
+    
+    if(list.length>0){
+      console.log("数组的list:" + list[0][0]);
+    }
+  };
+
+  const { mouseMove } = useBoardMouseListener((wrapperEvent: WrapperEvent) => {
+    console.log(
+      "包裹的事件: left:" +
+        (wrapperEvent.event.clientX - ref?.clientLeft) +
+        "top:+" +
+        (wrapperEvent.event.clientY - ref?.clientTop)
+    );
+    console.log("ref:clientLeft:" + ref?.clientLeft);
+  });
 
   function ComponmentMouseDown(event) {
     console.log("ComponmentMouseDown:触发");
@@ -101,10 +130,10 @@ const ContentConfig = (props: any) => {
         <div
           ref={editRef}
           className="contont-edit-main"
-          onMouseDown={MouseDown}
-          onDrop={drop}
-          onDragOver={dragOver}
-          onDragEnter={dragEnter}
+          // onMouseDown={MouseDown}
+          // onDrop={drop}
+          // onDragOver={dragOver}
+          // onDragEnter={dragEnter}
         >
           {/* <div className="content-edit-main-scale"> */}
           {/* <div>  宽度{editWidth} 高度 {editHeight}  屏幕编辑区域宽度{screen.width}  屏幕编辑区伸缩后宽度{editWidth}  屏幕编辑区域高度{editHeight}  屏幕编辑区伸缩后高度{screen.height*screen.scale}伸缩率{screen.scale}</div> */}
@@ -140,7 +169,11 @@ const ContentConfig = (props: any) => {
             }}
           />
 
-          <div className="content-edit-main-content" onMouseDown={handleEvent}>
+          <div
+            className="content-edit-main-content"
+            ref={setRef}
+            onMouseMove={mouseOver}
+          >
             {/* <ShapeBoxWrapper
               left={chartContent.left}
               top={chartContent.top}
@@ -157,122 +190,32 @@ const ContentConfig = (props: any) => {
                     <WidgetWrapper
                       key={key}
                       widget={value}
+                      scale={scale}
                       onDragOrResizeAction={(
                         WidgetOperation: WidgetOperation
                       ) => {
-                     const newState =  produce(value,draft=>{
-                          draft.config.rect=WidgetOperation.newRect
-                        })
-                        dispatch(updateWidget(newState))
-                      } }          ></WidgetWrapper>
-                  );
+                        console.log(
+                          "drag:" +
+                            "x:" +
+                            WidgetOperation.newRect.x +
+                            "y:" +
+                            WidgetOperation.newRect.y +
+                            "width:" +
+                            WidgetOperation.newRect.width +
+                            "height:" +
+                            WidgetOperation.newRect.height
+                        );
 
-                  // return (
-                  //   <Rnd
-                  //     key={key}
-                  //     style={{
-                  //       display: "flex",
-                  //       // alignItems: "center",
-                  //       // justifyContent: "center",
-                  //       border: "solid 1px #ddd",
-                  //       background: "#f0f0f0",
-                  //     }}
-                  //     size={{
-                  //       height: value.config.rect.height,
-                  //       width: value.config.rect.width,
-                  //     }}
-                  //     position={{
-                  //       x: value.config.rect.x,
-                  //       y: value.config.rect.y,
-                  //     }}
-                  //     onDragStop={(e, d) => {
-                  //       // const newChartCompontents = [...chartCompontents];
-                  //       // newChartCompontents[index] = {
-                  //       //   top: d.y,
-                  //       //   left: d.x,
-                  //       //   width: src.width,
-                  //       //   height: src.height,
-                  //       // };
-                  //       // setChartCompontents(newChartCompontents);
-                  //     }}
-                  //     onResize={(e, direction, ref, delta, position) => {
-                  //       // const newChartCompontents = [...chartCompontents];
-                  //       // newChartCompontents[index] = {
-                  //       //   top: position.y,
-                  //       //   left: position.x,
-                  //       //   width: ref.offsetWidth,
-                  //       //   height: ref.offsetHeight,
-                  //       // };
-                  //       // setChartCompontents(newChartCompontents);
-                  //     }}
-                  //   >
-                  //     <TestWrapper
-                  //       width={value.config.rect.width}
-                  //       height={value.config.rect.height}
-                  //       left={value.config.rect.x}
-                  //       top={value.config.rect.y}
-                  //     >
-                  //       {/* y:{src.top}x:{src.left} 高:{src.height}宽:{src.width} */}
-                  //     </TestWrapper>
-                  //   </Rnd>
-                  // );
+                        const newState = produce(value, (draft) => {
+                          draft.config.rect = WidgetOperation.newRect;
+                        });
+                        dispatch(updateWidget(newState));
+                      }}
+                    ></WidgetWrapper>
+                  );
                 }
               )
             ) : (
-              // chartCompontents.map((src, index) => {
-              //   return (
-              //     <Rnd
-              //       key={index}
-              //       style={{
-              //         display: "flex",
-              //         // alignItems: "center",
-              //         // justifyContent: "center",
-              //         border: "solid 1px #ddd",
-              //         background: "#f0f0f0",
-              //       }}
-              //       size={{
-              //         height: src.height,
-              //         width: src.width,
-              //       }}
-              //       position={{
-              //         x: src.left,
-              //         y: src.top,
-              //       }}
-              //       onDragStop={(e, d) => {
-              //         const newChartCompontents = [...chartCompontents];
-
-              //         newChartCompontents[index] = {
-              //           top: d.y,
-              //           left: d.x,
-              //           width: src.width,
-              //           height: src.height,
-              //         };
-              //         setChartCompontents(newChartCompontents);
-              //       }}
-              //       onResize={(e, direction, ref, delta, position) => {
-              //         const newChartCompontents = [...chartCompontents];
-
-              //         newChartCompontents[index] = {
-              //           top: position.y,
-              //           left: position.x,
-              //           width: ref.offsetWidth,
-              //           height: ref.offsetHeight,
-              //         };
-
-              //         setChartCompontents(newChartCompontents);
-              //       }}
-              //     >
-              //       <TestWrapper
-              //         width={src.width}
-              //         height={src.height}
-              //         left={src.left}
-              //         top={src.top}
-              //       >
-              //         {/* y:{src.top}x:{src.left} 高:{src.height}宽:{src.width} */}
-              //       </TestWrapper>
-              //     </Rnd>
-              //   );
-              // })
               <></>
             )}
             {/* <Moveable flushSync={flushSync} /> */}
@@ -293,41 +236,6 @@ const ShapeBoxWrapper = styled.div<ComponmentProps>`
   z-index: 1;
   left: ${(p) => p.left}px;
   top: ${(p) => p.top}px;
-`;
-
-const ShapePointWrapper = styled.div<{ left: number; top: number }>`
-  z-index: 1;
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border: 3px solid #51d6a9;
-  left: ${(p) => p.left}px;
-  top: ${(p) => p.top}px;
-  border-radius: 8px;
-  background-color: #fff;
-  transform: translate(-40%, -30%);
-  &.t {
-    width: 60px;
-    transform: translate(-50%, -50%);
-  }
-  &.b {
-    width: 60px;
-    transform: translate(-50%, -50%);
-  }
-  &.l,
-  &.r {
-    height: 60px;
-  }
-  &.r {
-    transform: translate(-20%, -50%);
-  }
-  &.l {
-    transform: translate(-45%, -50%);
-  }
-  &.rt,
-  &.rb {
-    transform: translate(-30%, -30%);
-  }
 `;
 
 const Wrapper = styled.div<{

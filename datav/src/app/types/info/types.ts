@@ -11,5 +11,4 @@ export interface WidgetInfo{
     loading: boolean;
     editing:boolean;
     selected: boolean;
-    moved:boolean;
 }
