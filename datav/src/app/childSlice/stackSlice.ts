@@ -50,7 +50,7 @@ export const editBoardStackSlice = createSlice({
   initialState: initEditBoardState,
   reducers: {
     addWidgets(state, action: PayloadAction<Widget[]>) {
-      const widgets = action.payload; 
+      const widgets = action.payload;
       const board = state.dashBoard;
       const { type } = board.config;
       let maxWidgetIndex = 0;
@@ -64,29 +64,38 @@ export const editBoardStackSlice = createSlice({
 
       widgets.forEach((ele) => {
         maxWidgetIndex++;
-        
+
         const newName = widgetManager
           .toolkit(ele.config.originalType)
           .getName();
 
-          const newEle = produce(ele,draft => {
-              draft.config.index=maxWidgetIndex;
-              draft.config.name= draft.config.name
-          });
+        const newEle = produce(ele, (draft) => {
+          draft.config.index = maxWidgetIndex;
+          draft.config.name = draft.config.name;
+        });
 
-          state.widgetRecord[newEle.id]=newEle
+        state.widgetRecord[newEle.id] = newEle;
       });
-
     },
     updateWidget(state, action: PayloadAction<Widget>) {
       const widget = action.payload;
       state.widgetRecord[widget.id] = { ...widget };
     },
+    changeWidgetsIndex(state, action: PayloadAction<{ id: string,index:number }[]>) {
+      const opts = action.payload;
+      opts.forEach(it => {
+        const { id, index } = it;
+        debugger
+        state.widgetRecord[id].config.index = index;
+      });
+
+    },
   },
   extraReducers: (builder) => {},
 });
 
-export const { updateWidget,addWidgets } = editBoardStackSlice.actions;
+export const { updateWidget, addWidgets,changeWidgetsIndex} = editBoardStackSlice.actions;
 export const selecteditBoard = (state: RootState) => state.editBoard;
+export const selecteditWidgetInfo = (state: RootState) => state.widgetInfo;
 
 export default editBoardStackSlice.reducer;

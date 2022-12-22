@@ -5,9 +5,11 @@ import {
   selecteditBoard,
 } from "../../../../app/childSlice/stackSlice";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
+import { addWidgetInfos } from "../../../../app/slice";
 import MacOsControllerBtn from "../../../../components/macOsControllBtn/macOsControllBtn";
 import DynamicIcon from "../../../../icon/DynamicSvgIcon";
 import { ORIGINAL_TYPE_MAP } from "../../../../util/constants";
+import { createWidgetInfo } from "../../../../util/widget";
 import { widgetManagerInstance } from "../../../utils/WidgetManager/widgetManager";
 import "./style/contentChart.less";
 // import style from "./style/contentChart.less"
@@ -153,8 +155,10 @@ const ContentChart: ContentChartInterface = (props: ContentChartProps) => {
                 var weight=   widgetManagerInstance.toolkit(ORIGINAL_TYPE_MAP.chart).create({})
                 console.log("初始创建的Weight"+JSON.stringify(weight))
 
-                
-                dispatch([])
+                dispatch(addWidgetInfos([
+                  createWidgetInfo(weight.id)
+                ]))
+                // dispatch([])
                 dispatch(
                   addWidgets([
                     weight

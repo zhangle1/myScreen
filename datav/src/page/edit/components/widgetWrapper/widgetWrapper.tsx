@@ -3,13 +3,17 @@ import { RectConfig } from "../../../../app/types/config/types";
 import { Rnd } from "react-rnd";
 import styled from "styled-components/macro";
 import classNames from "classnames";
+import { WidgetInfo } from "../../../../app/types/info/types";
+import { addWidgetInfos } from "../../../../app/slice";
 
 export interface WidgetWrapperProps {
   widget: Widget;
+  widgetInfo: WidgetInfo;
   key: string;
   children?: any;
   scale: number;
   onDragOrResizeAction: (WidgetOperation: WidgetOperation) => void;
+  onClickAction: (key:string)=>void;
 }
 
 interface WidgetWrapperInterface extends React.FC<WidgetWrapperProps> {}
@@ -23,10 +27,8 @@ export interface WidgetOperation {
 export const WidgetWrapper: WidgetWrapperInterface = (
   props: WidgetWrapperProps
 ) => {
-  const { widget, key, onDragOrResizeAction,scale, children } = props;
-
-  const maskWrapperClazz = classNames("");
-
+  const { widget, key, onDragOrResizeAction, onClickAction,scale, widgetInfo, children } =
+    props;
 
   var rect = widget.config.rect;
   var newProps = {
@@ -37,15 +39,22 @@ export const WidgetWrapper: WidgetWrapperInterface = (
       // justifyContent: "center",
       border: "solid 1px #ddd",
       background: "#f0f0f0",
+      zIndex:widget.config.index,
     },
     size: {
       height: rect.height,
       width: rect.width,
     },
-    scale:scale,
+    scale: scale,
     position: {
       x: rect.x,
       y: rect.y,
+    },
+    onClick:(e)=>{
+      console.log("key:"+key)
+      onClickAction(
+        widget.id,
+      )
     },
     onDragStop: (e, d: any) => {
       onDragOrResizeAction({
@@ -74,7 +83,7 @@ export const WidgetWrapper: WidgetWrapperInterface = (
   };
 
   return (
-    <Rnd {...newProps}>
+    <Rnd {...newProps}  >
       <WeightWrapper
         width={rect.width}
         height={rect.height}
@@ -83,7 +92,9 @@ export const WidgetWrapper: WidgetWrapperInterface = (
       ></WeightWrapper>
 
       <MaskWrapper
-        className={maskWrapperClazz}
+        className={classNames({
+          selected: widgetInfo.selected,
+        })}
         width={rect.width}
         height={rect.height}
         left={rect.x}
@@ -121,32 +132,18 @@ const MaskWrapper = styled.div<{
   width: ${(p) => p.width}px;
   height: ${(p) => p.height}px;
 
-  &:hover,
-  &:active {
+  &.selected {
     border-color: "#000000";
     border-style: dotted;
     border-width: 5px;
   }
-
-
-  &.selected {
-    border-color: "#000000";
+  &.editing {
+    border-color: ${(p) => (p.hideBorder ? "transparent" : p.theme.success)};
     border-style: solid;
     border-width: 2px;
     &:hover,
     &:active {
-      border-style: solid;
+      border-width: ${(p) => (p.hideBorder ? 0 : "2px")};
     }
   }
-  /* &.editing {
-    border-color: ${p => (p.hideBorder ? 'transparent' : p.theme.success)};
-    border-style: solid;
-    border-width: 2px;
-    &:hover,
-    &:active {
-      border-width: ${p => (p.hideBorder ? 0 : '2px')};
-    }
-  } */
-
-
 `;

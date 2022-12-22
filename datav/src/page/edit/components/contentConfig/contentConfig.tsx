@@ -15,7 +15,9 @@ import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { selectBoard } from "../../../../app/slice/boardSlice";
 import { getJsonConfigs } from "../../../../util";
 import {
+  changeWidgetsIndex,
   selecteditBoard,
+  selecteditWidgetInfo,
   updateWidget,
 } from "../../../../app/childSlice/stackSlice";
 import { WidgetWrapper } from "../widgetWrapper/widgetWrapper";
@@ -36,6 +38,7 @@ interface ComponmentProps {
 const ContentConfig = (props: any) => {
   //  const board= useAppSelector(selectBoard)
   const editBoard = useAppSelector(selecteditBoard);
+  const editWidgetInfo = useAppSelector(selecteditWidgetInfo);
   const dispatch = useAppDispatch();
 
   //  editBoard.widgetRecord
@@ -72,47 +75,39 @@ const ContentConfig = (props: any) => {
   const [ref, setRef] = useState<HTMLDivElement | null>(null);
 
   var mouseOver = (wrapperEvent) => {
-
-
     var clientX = wrapperEvent.clientX - ref?.getBoundingClientRect().left;
     var clientY = wrapperEvent.clientY - ref?.getBoundingClientRect().top;
 
     var list = Object.entries(editBoard.widgetRecord).filter(
       ([key, value], index) => {
         return (
-          (clientX/scale)>= value.config.rect.x &&
-          (clientX/scale) <= (value.config.rect.x + value.config.rect.width)  &&
-          (clientY/scale) >= value.config.rect.y  &&
-          (clientY/scale )<= (value.config.rect.y + value.config.rect.height) 
+          clientX / scale >= value.config.rect.x &&
+          clientX / scale <= value.config.rect.x + value.config.rect.width &&
+          clientY / scale >= value.config.rect.y &&
+          clientY / scale <= value.config.rect.y + value.config.rect.height
         );
       }
     );
-    
-    if(list.length>0){
-      console.log("数组的list:" + list[0][0]);
-      var [widgetKey,widgetValue]= list[0]
-      dispatch(selectWidget({
-        id:widgetKey,
-        selected:true
-      }))
 
+    if (list.length > 0) {
+      list = list.sort((a, b) => b[1].config.index - a[1].config.index);
+      console.log("数组的list:" + list[0][0]);
+      var [widgetKey, widgetValue] = list[0];
+      dispatch(
+        selectWidget({
+          id: widgetKey,
+          selected: true,
+        })
+      );
+    } else {
+      dispatch(
+        selectWidget({
+          id: "-1",
+          selected: true,
+        })
+      );
     }
   };
-
-  const { mouseMove } = useBoardMouseListener((wrapperEvent: WrapperEvent) => {
-    console.log(
-      "包裹的事件: left:" +
-        (wrapperEvent.event.clientX - ref?.clientLeft) +
-        "top:+" +
-        (wrapperEvent.event.clientY - ref?.clientTop)
-    );
-    console.log("ref:clientLeft:" + ref?.clientLeft);
-  });
-
-  function ComponmentMouseDown(event) {
-    console.log("ComponmentMouseDown:触发");
-    console.log(event);
-  }
 
   return (
     <Wrapper
@@ -184,22 +179,21 @@ const ContentConfig = (props: any) => {
                     <WidgetWrapper
                       key={key}
                       widget={value}
+                      widgetInfo={editWidgetInfo[key]}
                       scale={scale}
+                      onClickAction={(key:string)=>{
+                        var maxWidgetIndex =  Object.entries(editBoard.widgetRecord)
+                        .map(([key,item]) => item.config.index)
+                        .sort((b, a) => a - b)[0];
+                        console.log("点击事件:"+key)
+                        dispatch(changeWidgetsIndex([{
+                          id:key,
+                          index:maxWidgetIndex+1
+                        }]))
+                      }}
                       onDragOrResizeAction={(
                         WidgetOperation: WidgetOperation
                       ) => {
-                        console.log(
-                          "drag:" +
-                            "x:" +
-                            WidgetOperation.newRect.x +
-                            "y:" +
-                            WidgetOperation.newRect.y +
-                            "width:" +
-                            WidgetOperation.newRect.width +
-                            "height:" +
-                            WidgetOperation.newRect.height
-                        );
-
                         const newState = produce(value, (draft) => {
                           draft.config.rect = WidgetOperation.newRect;
                         });
@@ -224,13 +218,6 @@ const ContentConfig = (props: any) => {
 };
 
 export default ContentConfig;
-const ShapeBoxWrapper = styled.div<ComponmentProps>`
-  position: absolute;
-  cursor: move;
-  z-index: 1;
-  left: ${(p) => p.left}px;
-  top: ${(p) => p.top}px;
-`;
 
 const Wrapper = styled.div<{
   contentWidth: number;
@@ -283,8 +270,7 @@ const Wrapper = styled.div<{
         box-shadow: 0 8px 10px rgb(0 0 0 / 7%);
       }
 
-      .testComponment {
-      }
+ 
     }
 
     /* } */

@@ -28,7 +28,6 @@ const widgetInfoRecordSlice= createSlice({
         },
         addWidgetInfos(state, action: PayloadAction<WidgetInfo[]>) {
             const widgetInfos = action.payload;
-      
             widgetInfos.forEach(info => {
               state[info.id] = info;
             });
