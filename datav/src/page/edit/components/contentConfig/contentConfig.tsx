@@ -24,6 +24,7 @@ import produce from "immer";
 import useBoardMouseListener, {
   WrapperEvent,
 } from "./hooks/useBoardMouseListener";
+import { selectWidget } from "../../../../app/slice";
 
 interface ComponmentProps {
   left?: number;
@@ -73,24 +74,11 @@ const ContentConfig = (props: any) => {
   var mouseOver = (wrapperEvent) => {
 
 
-    var isSelected = null;
-
     var clientX = wrapperEvent.clientX - ref?.getBoundingClientRect().left;
     var clientY = wrapperEvent.clientY - ref?.getBoundingClientRect().top;
 
     var list = Object.entries(editBoard.widgetRecord).filter(
       ([key, value], index) => {
-        console.log(
-          "参数查看:" +
-            "clientX:" +
-            (clientX)+
-            "X左:" +
-            value.config.rect.x+
-            "宽度:" +
-            (value.config.rect.width )+
-            "伸缩率"+
-            scale
-        );
         return (
           (clientX/scale)>= value.config.rect.x &&
           (clientX/scale) <= (value.config.rect.x + value.config.rect.width)  &&
@@ -102,6 +90,12 @@ const ContentConfig = (props: any) => {
     
     if(list.length>0){
       console.log("数组的list:" + list[0][0]);
+      var [widgetKey,widgetValue]= list[0]
+      dispatch(selectWidget({
+        id:widgetKey,
+        selected:true
+      }))
+
     }
   };
 

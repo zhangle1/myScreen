@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { editBoardStackSlice } from '../childSlice/stackSlice';
+import { RootState } from '../store';
+import { WidgetInfo } from '../types/info/types';
 import { EditBoardState } from './type';
 
 
@@ -23,7 +25,19 @@ const widgetInfoRecordSlice= createSlice({
                     state[key].selected=false;
                 }
             }
-        }
+        },
+        addWidgetInfos(state, action: PayloadAction<WidgetInfo[]>) {
+            const widgetInfos = action.payload;
+      
+            widgetInfos.forEach(info => {
+              state[info.id] = info;
+            });
+          },
     }
-
 })
+
+
+export const {selectWidget,addWidgetInfos} =widgetInfoRecordSlice.actions
+export const selectWidgetInfo = (state: RootState) => state.widgetInfo;
+
+export default widgetInfoRecordSlice.reducer

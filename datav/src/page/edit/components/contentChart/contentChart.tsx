@@ -152,6 +152,9 @@ const ContentChart: ContentChartInterface = (props: ContentChartProps) => {
 
                 var weight=   widgetManagerInstance.toolkit(ORIGINAL_TYPE_MAP.chart).create({})
                 console.log("初始创建的Weight"+JSON.stringify(weight))
+
+                
+                dispatch([])
                 dispatch(
                   addWidgets([
                     weight
