@@ -119,6 +119,10 @@ const ContentConfig = (props: any) => {
         <div
           ref={editRef}
           className="contont-edit-main"
+
+            onMouseDown={()=>{}}
+            onContextMenu={()=>{}}
+            onClick={()=>{}}
           // onMouseDown={MouseDown}
           // onDrop={drop}
           // onDragOver={dragOver}
