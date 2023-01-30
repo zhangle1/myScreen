@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="datart-file-data-provider" />
+        <module name="datart-security" />
+        <module name="datart-data-provider-base" />
+        <module name="datart-server" />
+        <module name="datart-jdbc-data-provider" />
+        <module name="datart-http-data-provider" />
+        <module name="datart-core" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="file-data-provider" target="1.8" />
+      <module name="http-data-provider" target="1.8" />
+      <module name="jdbc-data-provider" target="1.8" />
+      <module name="security" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="datart-core" options="-parameters" />
+      <module name="datart-data-provider" options="-parameters" />
+      <module name="datart-data-provider-base" options="-parameters" />
+      <module name="datart-file-data-provider" options="-parameters" />
+      <module name="datart-http-data-provider" options="-parameters" />
+      <module name="datart-jdbc-data-provider" options="-parameters" />
+      <module name="datart-parent" options="-parameters" />
+      <module name="datart-security" options="-parameters" />
+      <module name="datart-server" options="-parameters" />
+      <module name="file-data-provider" options="-parameters" />
+      <module name="http-data-provider" options="-parameters" />
+      <module name="jdbc-data-provider" options="-parameters" />
+    </option>
+  </component>
+</project>

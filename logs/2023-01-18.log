@@ -1,0 +1,8 @@
+2023-01-18 07:37:49.888 [SpringContextShutdownHook] INFO  org.quartz.core.QuartzScheduler : Scheduler DatartScheduleCluster_$_DESKTOP-RN4T3PC1673947837229 paused.
+2023-01-18 07:37:50.839 [SpringContextShutdownHook] INFO  o.s.scheduling.quartz.SchedulerFactoryBean : Shutting down Quartz Scheduler
+2023-01-18 07:37:50.839 [SpringContextShutdownHook] INFO  org.quartz.core.QuartzScheduler : Scheduler DatartScheduleCluster_$_DESKTOP-RN4T3PC1673947837229 shutting down.
+2023-01-18 07:37:50.839 [SpringContextShutdownHook] INFO  org.quartz.core.QuartzScheduler : Scheduler DatartScheduleCluster_$_DESKTOP-RN4T3PC1673947837229 paused.
+2023-01-18 07:37:50.840 [SpringContextShutdownHook] INFO  org.quartz.core.QuartzScheduler : Scheduler DatartScheduleCluster_$_DESKTOP-RN4T3PC1673947837229 shutdown complete.
+2023-01-18 07:37:50.869 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource : {dataSource-1} closing ...
+2023-01-18 07:37:50.889 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource : {dataSource-1} closed
+2023-01-18 07:37:50.891 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor : Shutting down ExecutorService 'applicationTaskExecutor'

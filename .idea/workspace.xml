@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1f1d1834-df8f-4d87-9f5f-8809ff66a4d3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/config/datart.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/jdbc-driver-ext.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/logback.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/profiles/application-config.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/AutoCloseBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/PageInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/annotations/Pattern.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/annotations/RequireNotBlank.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/annotations/RequireValid.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/annotations/SkipLogin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/consts/Const.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/consts/FileOwner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/consts/JavaType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/consts/TenantManagementMode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/consts/UserIdentityType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/consts/ValueType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/consts/VariableTypeEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/exception/BaseException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/exception/Exceptions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/exception/NotAllowedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/exception/NotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/exception/ParamException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/exception/ServerException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/exception/SqlParseError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/processor/ExtendProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/base/processor/ProcessorResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/common/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/common/BeanUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/common/Cache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/common/CacheFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/common/DateUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/common/FileUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/common/JacksonSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/common/MessageResolver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/common/ReflectUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/common/RequestContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/common/UUIDGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/common/UrlUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/Column.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/ConnectParams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/DataProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/DataProviderConfigTemplate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/DataProviderInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/DataProviderManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/DataProviderSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/DataProviderSubType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/DataProviderUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/Dataframe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/Dataframes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/ExecuteParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/ForeignKey.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/QueryScript.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/SchemaInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/SchemaItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/ScriptType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/ScriptVariable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/SelectColumn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/SingleTypedValue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/StdSqlOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/TableInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/TypedValue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/processor/DataProviderPostProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/processor/DataProviderPreProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/sql/AggregateOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/sql/Alias.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/sql/ColumnOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/sql/FilterOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/sql/FunArg.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/sql/FunArgType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/sql/FunctionColumn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/sql/FunctionOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/sql/GroupByOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/sql/Operator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/sql/OrderOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/data/provider/sql/SelectKeyword.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/AccessLog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/BaseEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/Dashboard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/Datachart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/Folder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/Organization.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/RelRoleResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/RelRoleUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/RelSubjectColumns.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/RelUserOrganization.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/Source.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/UserSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/View.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/ext/RoleBaseInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/ext/SourceBaseInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/ext/SourceDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/ext/UserBaseInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/ext/ViewBaseInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/entity/ext/VizBaseInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/log/AccessLogAppender.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/log/AccessType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/AccessLogMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/AccessLogSqlProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/OrganizationMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/OrganizationSqlProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/RelRoleResourceMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/RelRoleResourceSqlProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/RelRoleUserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/RelRoleUserSqlProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/RelSubjectColumnsMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/RelSubjectColumnsSqlProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/RelUserOrganizationMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/RelUserOrganizationSqlProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/RoleMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/RoleSqlProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/SourceMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/SourceSqlProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/UserSettingsMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/UserSettingsSqlProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/UserSqlProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/ext/AccessLogMapperExt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/ext/BaseMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/ext/CRUDMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/ext/OrganizationMapperExt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/ext/RelRoleResourceMapperExt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/ext/RelRoleUserMapperExt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/ext/RelSubjectColumnsMapperExt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/ext/RelUserOrganizationMapperExt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/ext/RoleMapperExt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/ext/SourceMapperExt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/ext/UserMapperExt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/mappers/ext/UserSettingsMapperExt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/migration/DatabaseMigration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/migration/Migration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/datart/core/migration/ScriptType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/resources/mybatis-generator/generatorConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/codegen/Parser.jj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/DefaultDataProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/ProviderManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/base/DataProviderException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/base/ParamReplaceException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/base/dto/SimpleViewConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/base/dto/SimpleViewJoinDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/DatartStdSqlFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/QueryScriptProcessResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/QueryScriptProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/SpecialSqlCallConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/SqlBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/SqlFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/SqlFunctionRegisterVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/SqlNodeUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/SqlParserUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/SqlQueryScriptProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/SqlValidateUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/SqlVariableVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/StructScriptProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/custom/CustomSqlBetweenOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/custom/CustomSqlTypeName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/custom/SqlSimpleStringLiteral.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/dialect/ClickHouseSqlDialectSupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/dialect/CustomSqlDialect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/dialect/FetchAndOffsetSupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/dialect/H2Dialect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/dialect/HiveSqlStdOperatorSupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/dialect/ImpalaSqlDialectSupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/dialect/MsSqlStdOperatorSupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/dialect/MysqlSqlStdOperatorSupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/dialect/OracleSqlStdOperatorSupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/dialect/PostgresqlSqlDialectSupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/calcite/dialect/SqlStdOperatorSupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/freemarker/FreemarkerContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/freemarker/StringTemplateLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/jdbc/DataTypeUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/jdbc/FalseVariablePlaceholder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/jdbc/JdbcDriverInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/jdbc/JdbcProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/jdbc/RegexVariableResolver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/jdbc/ResultSetMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/jdbc/SimpleVariablePlaceholder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/jdbc/SqlOperatorReg.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/jdbc/SqlParserVariableResolver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/jdbc/SqlScriptRender.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/jdbc/SqlSplitter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/local/LocalDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/optimize/DataProviderExecuteOptimizer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/optimize/DefaultLockFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/script/JoinCondition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/script/ReplacementPair.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/script/ScriptRender.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/script/SqlStringUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/script/StructScript.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/script/TableJoin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/data-provider-base/src/main/java/datart/data/provider/script/VariablePlaceholder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/file-data-provider/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/http-data-provider/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/src/main/java/datart/data/provider/JdbcDataProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/src/main/java/datart/data/provider/base/DatabaseTypeMapping.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/src/main/java/datart/data/provider/base/SqlExpression.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/src/main/java/datart/data/provider/base/SqlOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/src/main/java/datart/data/provider/jdbc/DataSourceFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/src/main/java/datart/data/provider/jdbc/DataSourceFactoryDruidImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/src/main/java/datart/data/provider/jdbc/adapters/ClickHouseDataProviderAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/src/main/java/datart/data/provider/jdbc/adapters/DmDataProviderAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/src/main/java/datart/data/provider/jdbc/adapters/DorisDataProviderAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/src/main/java/datart/data/provider/jdbc/adapters/H2DataProviderAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/src/main/java/datart/data/provider/jdbc/adapters/HiveDataProviderAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/src/main/java/datart/data/provider/jdbc/adapters/ImpalaDataProviderAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/src/main/java/datart/data/provider/jdbc/adapters/JdbcDataProviderAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/src/main/java/datart/data/provider/jdbc/adapters/MsSqlDataProviderAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/src/main/java/datart/data/provider/jdbc/adapters/OracleDataProviderAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/src/main/java/datart/data/provider/jdbc/adapters/PrestoDataProviderAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/src/main/resources/META-INF/services/datart.core.data.provider.DataProvider" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/src/main/resources/jdbc-data-provider.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data-providers/jdbc-data-provider/src/main/resources/jdbc-driver.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/base/InviteToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/base/JwtToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/base/PasswordToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/base/Permission.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/base/PermissionInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/base/ResourceType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/base/RoleType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/base/SubjectType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/exception/AuthException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/exception/PermissionDeniedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/manager/DatartSecurityManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/manager/PermissionDataCache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/manager/RequestScopePermissionDataCache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/manager/ThreadScopePermissionDataCache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/manager/shiro/DatartRealm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/manager/shiro/PasswordCredentialsMatcher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/manager/shiro/SecurityConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/manager/shiro/ShiroSecurityManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/oauth2/ClientRegistrationRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/oauth2/CustomOAuth2AuthorizationRequestRedirectFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/oauth2/CustomOauth2AuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/oauth2/CustomOauth2Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/oauth2/DingTalkOauth2Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/oauth2/WeChartOauth2Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/util/AESUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/util/JwkUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/util/JwtUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/util/PermissionHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/src/main/java/datart/security/util/SecurityUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/DatartServerApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/dto/InviteMemberResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/dto/OrganizationBaseInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/dto/ResourcePermissions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/dto/ResponseData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/dto/SubjectPermissions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/dto/SystemInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/dto/UserProfile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/dto/VariableValue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/dto/ViewPermission.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/params/BaseCreateParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/params/BaseUpdateParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/params/ChangeUserPasswordParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/params/CheckNameParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/params/GrantPermissionParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/params/OrgCreateParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/params/OrgUpdateParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/params/SetupParams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/params/SourceBaseUpdateParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/params/SourceCreateParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/params/SourceUpdateParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/params/UserAddParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/params/UserRegisterParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/params/UserResetPasswordParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/params/UserUpdateByIdParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/params/UserUpdateParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/params/ViewPermissionParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/transfer/ImportStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/transfer/TransferConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/transfer/model/SourceResourceModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/base/transfer/model/TransferModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/config/CustomConfigValidateBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/config/CustomPropertiesValidate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/config/DatabaseMigrationAware.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/config/ExternalRegisterRedirectStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/config/Oauth2AuthenticationFailureHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/config/Oauth2AuthenticationSuccessHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/config/SwaggerConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/config/WebExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/config/WebMvcConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/config/WebSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/config/interceptor/LoginInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/controller/BaseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/controller/DataProviderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/controller/SourceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/controller/SysController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/AsyncAccessLogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/BaseCRUDService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/BaseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/DataProviderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/ExternalRegisterService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/FileService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/MailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/OrgService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/ResourceTransferService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/RoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/SourceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/SysService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/UserSettingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/impl/AccessLogServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/impl/DataProviderServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/impl/ExternalRegisterServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/impl/FileServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/impl/MailServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/impl/OrgServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/impl/RoleServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/impl/SysServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/datart/server/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/META-INF/spring.factories" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/application-demo.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/db/migration/R2022.02.19__1.0.0.beta.2.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/db/migration/R2022.03.14__1.0.0.beta.3.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/db/migration/R2022.05.07__1.0.0.beta.4.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/db/migration/R2022.08.05__1.0.0.rc.1.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/db/migration/V2022.02.18__baseline.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/db/migration/V2022.02.19__1.0.0.beta.2.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/db/migration/V2022.03.14__1.0.0.beta.3.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/db/migration/V2022.05.07__1.0.0.beta.4.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/db/migration/V2022.08.05__1.0.0.rc.1.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/i18n/datart_i18n.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/i18n/datart_i18n_en.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/resources/i18n/datart_i18n_zh.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-providers/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data-providers/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="spring-beans.schema" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2KDbrY5W1zJczL4oLbVcu7DNpAt" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "corretto-1.8",
+    "last_opened_file_path": "D:/project/myScreen/core/src/main/java/datart/core/entity",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "spring.configuration.checksum": "d2512dd99a33692247b74b6b906f7891",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\project\myScreen\core\src\main\java\datart\core\entity" />
+      <recent name="D:\project\myScreen\core\src\main\java\datart\core\mappers" />
+      <recent name="D:\project\myScreen\core\src\main\java\datart\core\base" />
+      <recent name="D:\project\myScreen\server\src\main\java\datart\server\config" />
+      <recent name="D:\project\myScreen\server\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\project\myScreen\data-providers\jdbc-data-provider\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="datart.server.service.impl" />
+      <recent name="datart.server.service" />
+      <recent name="datart.server.base.params" />
+      <recent name="datart.server.base.dto" />
+      <recent name="datart.server.controller" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="datart-data-provider-base" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="datart-data-provider-base" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DatartServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="datart-server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="datart.DatartServerApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="datart.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.DatartServerApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1f1d1834-df8f-4d87-9f5f-8809ff66a4d3" name="Changes" comment="" />
+      <created>1673512299927</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1673512299927</updated>
+      <workItem from="1673512301238" duration="1845000" />
+      <workItem from="1673570470565" duration="7119000" />
+      <workItem from="1673580307903" duration="187000" />
+      <workItem from="1673580520124" duration="271000" />
+      <workItem from="1673580797082" duration="12142000" />
+      <workItem from="1673832641322" duration="38904000" />
+      <workItem from="1674953436137" duration="23634000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework.security:spring-security-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="javascript:npm:styled-components" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.validation:jakarta.validation-api" />
+    <option featureType="dependencySupport" implementationName="java:com.google.protobuf:protobuf-java" />
+    <option featureType="dependencySupport" implementationName="javascript:npm:tailwindcss" />
+    <option featureType="dependencySupport" implementationName="java:org.seleniumhq.selenium:selenium-java" />
+    <option featureType="dependencySupport" implementationName="java:io.projectreactor:reactor-core" />
+    <option featureType="dependencySupport" implementationName="javascript:npm:webpack" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="java:org.hibernate.validator:hibernate-validator" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
+    <option featureType="dependencySupport" implementationName="java:org.thymeleaf:thymeleaf" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+    <option featureType="dependencySupport" implementationName="javascript:npm:postcss" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <dependency leave-enabled="true" master-id="0" />
+        </breakpoint>
+        <breakpoint type="javascript-exception">
+          <dependency id="0" />
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -1,0 +1,24 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="MavenPackageUpdate" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="excludeList">
+        <list>
+          <option value="com.alibaba:druid-spring-boot-starter" />
+          <option value="com.codeborne:phantomjsdriver" />
+          <option value="com.codeborne:phantomjsdriver" />
+          <option value="io.springfox:springfox-swagger-ui" />
+          <option value="io.springfox:springfox-swagger2" />
+          <option value="io.springfox:springfox-swagger2" />
+          <option value="io.springfox:springfox-swagger2" />
+          <option value="io.springfox:springfox-swagger2" />
+          <option value="io.springfox:springfox-swagger2" />
+          <option value="io.springfox:springfox-swagger2" />
+          <option value="io.springfox:springfox-swagger2" />
+          <option value="io.springfox:springfox-swagger2" />
+          <option value="org.seleniumhq.selenium:selenium-java" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
